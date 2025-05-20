@@ -6,7 +6,7 @@ Ivan Chen, Kevin Li
 
 # Technical Details:
 
-Snakebird is a puzzle game, based on the hit game Snake, with the added twist of gravity to interactions. Each level involves fruit that the player must collect, and then must reach a portal at the end. The game is organized in a small grid. The player will fall down if there are no tiles directly below any of their segments.
+Snakebird is a challenging puzzle game that's based on the hit game Snake. Each level involves fruit, just like in normal Snake, that the player must collect before reaching a portal at the end. The game is organized in a compact grid with blocks and fruit placed in positions designed for the player to get stuck. Not only does the player have to navigate getting stuck tight rooms, they may also find themselves falling off into the water or dying to spikes. Snakebird combines simple movement with complex puzzle design and many different puzzle elements to make a fascinatingly complex game.
 
 ## Critical Features:
 - Movable player that is influenced by gravity.
@@ -18,6 +18,9 @@ Snakebird is a puzzle game, based on the hit game Snake, with the added twist of
 - Undo key to undo the last action
 - Spike obstacle that immediately fails the stage if the player lands on it
 - Multiple snakebirds (difficult) that the player can swap between with a button
+- Portals to teleport the player
+- Movable blocks
+- Stage clear animation
 
 # Project Design
 
@@ -35,13 +38,13 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 # Intended pacing:
 
 * Environment creation []
-  * Create block object class [] (estimated done by 5/22)
+  * Create block object class [] (estimated done by 5/23)
     * Blocks that make up the stage
     * Arraylist of blocks in main game class
-  * Create goal object class [] (estimated done by 5/26) (Ivan)
+  * Create goal object class [] (estimated done by 5/27) (Ivan)
     * Boolean variables to determine if player enters goal and if goal open
 
-* Player character object class [] (estimated done by 5/25) (Kevin)
+* Player character object class [] (estimated done by 5/26) (Kevin)
   * Body parts []
     * Arraylist of coordinates of the body parts
     * variable tracks length of body (size of arraylist)
@@ -52,9 +55,9 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
   * Gravity []
     * All body parts move down some y spaces until hit block below
 
-* Fruit object class extends block [] (estimated done by 5/26) (Ivan)
+* Fruit object class extends block [] (estimated done by 5/27) (Ivan)
   * If snake head position = fruit position, fruit collected and remove from the stage
   * If non head body part interacts, just acts like a block
 
 
-* Make first stage [] (estimated done by 5/27)
+* Make first stage [] (estimated done by 5/28)
