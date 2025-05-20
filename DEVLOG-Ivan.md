@@ -2,10 +2,7 @@
 
 This document must be updated daily every time you finish a work session.
 
-## Amy Smith CHANGE THE NAME FOOL!
+## Ivan Chen
 
-### 2024-01-02 - Brief description
-Expanded description including how much time was spent on task.
-
-### 2024-01-03 - Brief description
-Expanded description including how much time was spent on task.
+### 2025-05-19 - Prototype update
+Over the course of a period, Wrote a summary of the project, as well as describing the critical and optional features. (around 20 minutes in total)
