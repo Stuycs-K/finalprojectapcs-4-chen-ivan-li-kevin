@@ -61,3 +61,11 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 
 
 * Make first stage [] (estimated done by 5/28)
+
+* Spike object class extends block [] (OPTIONAL)
+  * If spike position = any player body part position, player directions
+
+* Mutiple Snakebirds [] (OPTIONAL)
+  * Arraylist of snakebirds in main game class
+  * Button press changes between which snakebird is being controlled
+  * Added boolean variable to snakebird class to track which is currently being controlled

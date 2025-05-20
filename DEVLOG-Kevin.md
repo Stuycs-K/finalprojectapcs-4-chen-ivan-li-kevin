@@ -11,3 +11,4 @@ Wrote the intended pacing section with estimated finish dates and role designati
 Rewrote and expanded the one paragraph explanation - 9 minutes
 Added more optional features - 3 minutes
 Pushed back the estimated finishing dates - 1 minute
+Added some of the optional features to the intended pacing - 4 minutes
