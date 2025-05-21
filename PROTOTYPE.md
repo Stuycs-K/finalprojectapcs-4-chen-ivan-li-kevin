@@ -26,7 +26,7 @@ Snakebird is a challenging puzzle game that's based on the hit game Snake. Each 
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 
-
+! [UML diagram](uml.jpg)
 
 
 
@@ -61,7 +61,11 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
   * ~If snake head position = fruit position, fruit collected and remove from the stage~
   * ~If non head body part interacts, just acts like a block~
 
-* Make first stage [] (estimated done by 5/28)
+* Complete game class [] (estimated done by 5/28) (Kevin)
+  * checkHead() method to be called when movement key pressed compares head position to position of blocks and then finds if block is fruit or spike or neither
+  * checkBody() checks if player is floating, then finds how far the player should fall and calls gravity
+
+* Make first stage [] (estimated done by 5/29)
 
 * Mutiple Snakebirds [] (OPTIONAL)
   * Arraylist of snakebirds in main game class
