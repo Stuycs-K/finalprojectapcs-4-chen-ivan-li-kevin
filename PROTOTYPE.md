@@ -13,10 +13,10 @@ Snakebird is a challenging puzzle game that's based on the hit game Snake. Each 
 - Collectible fruit that can be marked as collected, and opens an end goal once all have been collected, and ending the level when that happens.
 - A reset key in case the player gets softlocked or fails the level
 - Multiple levels that the player can progress through
+- Spike obstacle that immediately fails the stage if the player lands on it
 
 ## Optional Features:
 - Undo key to undo the last action
-- Spike obstacle that immediately fails the stage if the player lands on it
 - Multiple snakebirds (difficult) that the player can swap between with a button
 - Portals to teleport the player
 - Movable blocks
@@ -41,6 +41,8 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
   * Create block object class [] (estimated done by 5/23)
     * Blocks that make up the stage
     * Arraylist of blocks in main game class
+    * Fruit boolean variable to determine if fruit or not
+    * Spike boolean variable to determine if spike
   * Create goal object class [] (estimated done by 5/27) (Ivan)
     * Boolean variables to determine if player enters goal and if goal open
 
@@ -55,15 +57,11 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
   * Gravity []
     * All body parts move down some y spaces until hit block below
 
-* Fruit object class extends block [] (estimated done by 5/27) (Ivan)
-  * If snake head position = fruit position, fruit collected and remove from the stage
-  * If non head body part interacts, just acts like a block
-
+* ~Fruit object class extends block [] (estimated done by 5/27) (Ivan)~
+  * ~If snake head position = fruit position, fruit collected and remove from the stage~
+  * ~If non head body part interacts, just acts like a block~
 
 * Make first stage [] (estimated done by 5/28)
-
-* Spike object class extends block [] (OPTIONAL)
-  * If spike position = any player body part position, player directions
 
 * Mutiple Snakebirds [] (OPTIONAL)
   * Arraylist of snakebirds in main game class
