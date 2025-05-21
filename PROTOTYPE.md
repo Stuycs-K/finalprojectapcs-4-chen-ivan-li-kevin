@@ -26,14 +26,15 @@ Snakebird is a challenging puzzle game that's based on the hit game Snake. Each 
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 
-! [UML diagram](uml.jpg)
+![UML diagram](uml.jpg?raw=true "uml diagram")
 
+Game: main class, will be simulating the game environment. 
 
+Snakebird: player class. move will make shift the head in one direction and the rest of the body will move to the coordinate of the next body segment. Segments are stored in a linked list of int coordinates (might change later to a separate class). Expanding will happen every time a fruit is collected, and increases the length of the snakebird, while leaving the segments untouched. Gravity decreases the height of the snakebird.
 
+Block: environmental block. If a snakebird has no blocks below any segments, it will start falling until it lands on a block or into a spike or the void. If the block is a spike, the game ends when it is touched. If the block is a fruit, it is collectable when the snakebird's head moves directly into it.
 
-
-
-+
+A level is created using the block ArrayList in Game, detailing the coordinates of every block. The player's location is initialized with the player list, which is a list due to future potential implementations of multiple players (should probably switch to just one for early coding). The goal opens once every fruit in the stage is collected, and results in a victory for the player when they reach an open goal.
 
 # Intended pacing:
 
