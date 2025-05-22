@@ -28,7 +28,7 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 
 ![UML diagram](uml.jpg?raw=true "uml diagram")
 
-Game: main class, will be simulating the game environment. 
+Game: main class, will be simulating the game environment.
 
 Snakebird: player class. move will make shift the head in one direction and the rest of the body will move to the coordinate of the next body segment. Segments are stored in a linked list of int coordinates (might change later to a separate class). Expanding will happen every time a fruit is collected, and increases the length of the snakebird, while leaving the segments untouched. Gravity decreases the height of the snakebird.
 
@@ -42,28 +42,27 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
   * Create block object class [] (estimated done by 5/23)
     * Blocks that make up the stage
     * Arraylist of blocks in main game class
-    * Fruit boolean variable to determine if fruit or not
-    * Spike boolean variable to determine if spike
+    * Also includes fruits and spikes, which are their own classes for clarity
   * Create goal object class [] (estimated done by 5/27) (Ivan)
     * Boolean variables to determine if player enters goal and if goal open
 
 * Player character object class [] (estimated done by 5/26) (Kevin)
   * Body parts []
-    * Arraylist of coordinates of the body parts
-    * variable tracks length of body (size of arraylist)
+    * Arraylist of Segments
+    * variable tracks length of body (size of LinkedList)
     * Grow method for after eating fruit
   * Movement []
     * front of body determines movement
     * can move in 4 directions except if there's a block or body part in the way
   * Gravity []
-    * All body parts move down some y spaces until hit block below
+    * All body parts move down y spaces, determined by which block is fallen on to
 
 * ~Fruit object class extends block [] (estimated done by 5/27) (Ivan)~
   * ~If snake head position = fruit position, fruit collected and remove from the stage~
   * ~If non head body part interacts, just acts like a block~
 
 * Complete game class [] (estimated done by 5/28) (Kevin)
-  * checkHead() method to be called when movement key pressed compares head position to position of blocks and then finds if block is fruit or spike or neither
+  * moveAttempt(int direction) method to be called when movement key pressed compares head position to position of blocks and then finds if block is fruit or spike or neither
   * checkBody() checks if player is floating, then finds how far the player should fall and calls gravity
 
 * Make first stage [] (estimated done by 5/29)
