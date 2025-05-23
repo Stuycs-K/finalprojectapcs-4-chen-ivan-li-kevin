@@ -22,9 +22,15 @@ void draw(){};
 void keyPressed(){}; //empty for now, need snakebird to be implemented
 public void drawLevel(){
   ArrayList<Block> blocks = map.getBlocks();
+  ArrayList<Fruit> fruits = map.getFruit();
   for (Block block : blocks){
     int[] coord = block.getCoord();
     fill(#9b6537);
     square(coord[0]*ratio, coord[1]*ratio, ratio);
+  }
+  for (Fruit fruit : fruits){
+    int[] coord = fruit.getCoord();
+    fill(#FF0000);
+    circle((coord[0]*ratio) + ratio/2, (coord[1]*ratio) + ratio/2, ratio);
   }
 }

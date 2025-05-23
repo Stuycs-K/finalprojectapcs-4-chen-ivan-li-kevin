@@ -9,9 +9,10 @@ public class Map{
   }
   public void loadLevel(int level){
     if (level == 1){
-      for (int i = 0; i < 15; i++){
+      for (int i = 3; i < 12; i++){
         blocks.add(new Block(i, 10));
       }
+      fruits.add(new Fruit(7, 7));
     }
     drawLevel();
   }
