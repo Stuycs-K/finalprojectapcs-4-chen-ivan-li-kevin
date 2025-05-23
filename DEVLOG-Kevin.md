@@ -17,3 +17,4 @@ This document must be updated daily every time you finish a work session.
 ### 2024-05-22 - Full rework of the uml diagram
 * Edited uml diagram and changed details - 10 minutes
 * Fully reworked the uml diagram after working out exactly how everything would function - 15 minutes
+* Changed the details and intended pacing to reflect uml diagram - 12 minutes

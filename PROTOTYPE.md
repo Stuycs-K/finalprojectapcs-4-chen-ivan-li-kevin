@@ -30,40 +30,45 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 
 Game: main class, will be simulating the game environment.
 
-Snakebird: player class. move will make shift the head in one direction and the rest of the body will move to the coordinate of the next body segment. Segments are stored in a linked list of int coordinates (might change later to a separate class). Expanding will happen every time a fruit is collected, and increases the length of the snakebird, while leaving the segments untouched. Gravity decreases the height of the snakebird.
+Snakebird: the player controlled class. move will remove the last segment and add one to the front. Segments are stored in a linked list of Segments. Expanding will happen every time a fruit is collected, and will add a new segment to the front, while leaving the other segments untouched. Gravity moves the entire snakebird down until it hits the floor.
 
 Block: environmental block. If a snakebird has no blocks below any segments, it will start falling until it lands on a block or into a spike or the void. If the block is a spike, the game ends when it is touched. If the block is a fruit, it is collectable when the snakebird's head moves directly into it.
 
-A level is created using the block ArrayList in Game, detailing the coordinates of every block. The player's location is initialized with the player list, which is a list due to future potential implementations of multiple players (should probably switch to just one for early coding). The goal opens once every fruit in the stage is collected, and results in a victory for the player when they reach an open goal.
+A level is created using the block ArrayList in Game, detailing the coordinates of every block. The player's location is initialized at the start with the player Snakebird variable. The goal opens once every fruit in the stage is collected, and results in a victory for the player when they reach an open goal.
 
 # Intended pacing:
 
-* Environment creation []
+* Environment creation [] (Ivan)
   * Create block object class [] (estimated done by 5/23)
     * Blocks that make up the stage
+      * Extended by fruit, segment, and spike, which are their own classes for clarity
     * Arraylist of blocks in main game class
-    * Also includes fruits and spikes, which are their own classes for clarity
-  * Create goal object class [] (estimated done by 5/27) (Ivan)
-    * Boolean variables to determine if player enters goal and if goal open
+  * Create goal object class [] (estimated done by 5/25)
+    * Boolean variable for if goal open
+    * method to open the goal
 
-* Player character object class [] (estimated done by 5/26) (Kevin)
+* Player character object class [] (estimated done by 5/25) (Kevin)
   * Body parts []
     * Arraylist of Segments
     * variable tracks length of body (size of LinkedList)
     * Grow method for after eating fruit
   * Movement []
-    * front of body determines movement
     * can move in 4 directions except if there's a block or body part in the way
   * Gravity []
     * All body parts move down y spaces, determined by which block is fallen on to
+    * If fallen on to spike, call death()
 
 * ~Fruit object class extends block [] (estimated done by 5/27) (Ivan)~
   * ~If snake head position = fruit position, fruit collected and remove from the stage~
   * ~If non head body part interacts, just acts like a block~
 
 * Complete game class [] (estimated done by 5/28) (Kevin)
-  * moveAttempt(int direction) method to be called when movement key pressed compares head position to position of blocks and then finds if block is fruit or spike or neither
-  * checkBody() checks if player is floating, then finds how far the player should fall and calls gravity
+  * moveAttempt(int direction) method to be called when movement key pressed; determines if the block the player wants to move to is a spike, fruit, block, segment, goal, or empty
+    * calls move(direction) when space is empty
+    * calls expand(direction) when space is fruit
+  * checkBody() finds how far the player should fall; can return 0
+  * death() turns end variable to true, which causes an animation to play in draw
+  * win() turns win variable to true, which will remove a segment each time draw is called to simulate the player entering the portal
 
 * Make first stage [] (estimated done by 5/29)
 
