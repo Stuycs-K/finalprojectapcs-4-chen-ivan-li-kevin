@@ -42,10 +42,13 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
   * Create block object class [] (estimated done by 5/23)
     * Blocks that make up the stage
       * Extended by fruit, segment, and spike, which are their own classes for clarity
-    * Arraylist of blocks in main game class
-  * Create goal object class [] (estimated done by 5/25)
+  * Create goal object class [] (estimated done by 5/24)
     * Boolean variable for if goal open
     * method to open the goal
+  * Create map object class [] (estimated done by 5/26)
+    * Arraylists of blocks
+    * Contains a goal
+    * Method to detect collision
 
 * Player character object class [] (estimated done by 5/25) (Kevin)
   * Body parts []
@@ -69,6 +72,7 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
   * checkBody() finds how far the player should fall; can return 0
   * death() turns end variable to true, which causes an animation to play in draw
   * win() turns win variable to true, which will remove a segment each time draw is called to simulate the player entering the portal
+  * loadLevel(int level) to load in the different levels
 
 * Make first stage [] (estimated done by 5/29)
 
