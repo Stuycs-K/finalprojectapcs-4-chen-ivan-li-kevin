@@ -21,19 +21,22 @@ void setup() {
 void draw(){};
 void keyPressed(){}; //empty for now, need snakebird to be implemented
 public void drawLevel(){
-  ArrayList<Block> blocks = map.getBlocks();
-  ArrayList<Fruit> fruits = map.getFruit();
-  for (Block block : blocks){
-    if (!debugGrid){
-      noStroke();
+  Space[][] spaceMap = map.getSpaces();
+  for (int i = 0; i < spaceMap.length; i++){
+    for (int j = 0; j < spaceMap[i].length; j++){
+      if (spaceMap[i][j] != null){
+        Space currentBlock = spaceMap[i][j];
+        if (currentBlock instanceof Fruit){
+          fill(#FF0000);
+          circle(i*ratio + ratio/2, (j*ratio) + ratio/2, 4*ratio/5);
+        }else{
+          if (!debugGrid){
+            noStroke();
+          }
+          fill(#9b6537);
+          square(i*ratio, j*ratio, ratio);
+        }
+      }
     }
-    int[] coord = block.getCoord();
-    fill(#9b6537);
-    square(coord[0]*ratio, coord[1]*ratio, ratio);
-  }
-  for (Fruit fruit : fruits){
-    int[] coord = fruit.getCoord();
-    fill(#FF0000);
-    circle((coord[0]*ratio) + ratio/2, (coord[1]*ratio) + ratio/2, 4*ratio/5);
   }
 }

@@ -34,10 +34,10 @@ public class Snakebird {
   //return true when lands on a spike
   public boolean gravity(int y, Map m) {
     boolean result = false;
-    Spaces[][] map = m.getSpaces();
+    Space[][] map = m.getSpaces();
     for (int i = 0; i < body.size(); i++) {
       body.get(i).changeY(y);
-      if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceOf Spike) {
+      if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike) {
         result = true;
       }
     }
