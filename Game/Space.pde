@@ -10,7 +10,7 @@ public class Space{
   public int getX(){
     return xcor;
   }
-  public int getX(){
+  public int getY(){
     return ycor;
   }
 }
