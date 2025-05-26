@@ -17,6 +17,7 @@ void setup() {
   }
   map = new Map();
   map.loadLevel(1);
+  drawLevel();
 }
 void draw(){};
 void keyPressed(){}; //empty for now, need snakebird to be implemented
@@ -37,6 +38,22 @@ public void drawLevel(){
           square(i*ratio, j*ratio, ratio);
         }
       }
+    }
+  }
+  boolean altColor = true;
+  for (Segment part : map.getPlayer().body){
+    noStroke();
+    if (part == map.getPlayer().body.peek()){// extra code for head. dont want to design yet
+      fill(#18d11e);
+      square(part.getX()*ratio, part.getY()*ratio, ratio);
+    }else{
+      if (altColor){
+        fill(#47db47);
+      }else{
+        fill(#18d11e);
+      }
+      altColor = !altColor;
+      square(part.getX()*ratio, part.getY()*ratio, ratio);
     }
   }
 }
