@@ -13,4 +13,10 @@ public class Space{
   public int getY(){
     return ycor;
   }
+  public void setX(int newX){
+    xcor = newX;
+  }
+  public void setY(int newY){
+    ycor = newY;
+  }
 }
