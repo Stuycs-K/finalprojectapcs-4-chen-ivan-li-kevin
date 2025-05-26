@@ -31,6 +31,6 @@ public void drawLevel(){
   for (Fruit fruit : fruits){
     int[] coord = fruit.getCoord();
     fill(#FF0000);
-    circle((coord[0]*ratio) + ratio/2, (coord[1]*ratio) + ratio/2, ratio);
+    circle((coord[0]*ratio) + ratio/2, (coord[1]*ratio) + ratio/2, 5*ratio/6);
   }
 }

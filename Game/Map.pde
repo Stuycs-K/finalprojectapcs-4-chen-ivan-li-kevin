@@ -13,6 +13,7 @@ public class Map{
         blocks.add(new Block(i, 10));
       }
       fruits.add(new Fruit(7, 7));
+      goal = new int[]{7,10};
     }
     drawLevel();
   }
@@ -22,5 +23,7 @@ public class Map{
   public ArrayList<Fruit> getFruit(){
     return fruits;
   }
-  
+  public int[] getGoal(){
+    return goal;
+  }
 }
