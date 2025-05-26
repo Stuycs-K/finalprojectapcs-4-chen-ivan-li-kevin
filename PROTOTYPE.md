@@ -2,7 +2,7 @@ Period 4
 
 Ivan Chen, Kevin Li
 
-*placeholder name
+Last Minute Games
 
 # Technical Details:
 
@@ -39,27 +39,31 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
 # Intended pacing:
 
 * Environment creation [] (Ivan)
-  * Create block object class [] (estimated done by 5/23)
+  * Create block object class that extends space [] (estimated done by 5/23)
     * Blocks that make up the stage
       * Extended by fruit, segment, and spike, which are their own classes for clarity
   * Create goal object class [] (estimated done by 5/24)
     * Boolean variable for if goal open
     * method to open the goal
-  * Create map object class [] (estimated done by 5/26)
-    * Arraylists of blocks
+  * Create map object class [] (estimated done by 5/26) (new)
+    * 2d array of spaces
     * Contains a goal
     * Method to detect collision
+    * also contains the player
+  * Space object classes [x] (new)
+    * a space on the board
+    * has coordinates
 
-* Player character object class [] (estimated done by 5/25) (Kevin)
-  * Body parts []
+* Player character object class [x] (estimated done by 5/25) (Kevin)
+  * Body parts [x]
     * Arraylist of Segments
     * variable tracks length of body (size of LinkedList)
     * Grow method for after eating fruit
-  * Movement []
+  * Movement [x]
     * can move in 4 directions except if there's a block or body part in the way
-  * Gravity []
+  * Gravity [x]
     * All body parts move down y spaces, determined by which block is fallen on to
-    * If fallen on to spike, call death()
+    * ~If fallen on to spike, call death()~ (actually happens in game)
 
 * ~Fruit object class extends block [] (estimated done by 5/27) (Ivan)~
   * ~If snake head position = fruit position, fruit collected and remove from the stage~

@@ -1,13 +1,13 @@
-public class Block{
-  private int xcor, ycor;
+public class Block extends Space{
   public Block(int coordX, int coordY){
-    xcor = coordX;
-    ycor = coordY;
+    super(coordX, coordY);
   }
-  public int[] getCoord(){
-    return new int[]{xcor, ycor};
+  
+  //remember: positve moves down and right, negative moves up and left
+  public void changeX(int x) {
+    xcor = xcor + x;
   }
-  public boolean checkCollision(Block other){
-    return (xcor == other.xcor) && (ycor == other.ycor);
+  public void changeY(int y) {
+    ycor =  ycor + y;
   }
 }
