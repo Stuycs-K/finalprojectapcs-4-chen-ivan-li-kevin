@@ -20,7 +20,22 @@ void setup() {
   drawLevel();
 }
 void draw(){};
-void keyPressed(){}; //empty for now, need snakebird to be implemented
+void keyPressed(){
+  if (key == 'w') {
+    moveAttempt(1);
+  }
+  if (key == 'd') {
+    moveAttempt(2);
+  }
+  if (key == 's') {
+    moveAttempt(3);
+  }
+  if (key == 'a') {
+    moveAttempt(4);
+  }
+  background(255);
+  drawLevel();
+}
 public void drawLevel(){
   Space[][] spaceMap = map.getSpaces();
   for (int i = 0; i < spaceMap.length; i++){
@@ -77,8 +92,12 @@ public void moveAttempt(int direction) {
     death();
   }
   else if (next instanceof Fruit) {
-    next = new Space(next.getX(), next.getY());
-    map.getPlayer().expand(new Segment(next.getX(), next.getY()));
+    Fruit nextFruit = (Fruit) map.getSpaces()[next.getX()][next.getY()];
+    if (!nextFruit.status()) {
+      nextFruit.collect();
+      map.checkFruit();
+      map.getPlayer().expand(new Segment(next.getX(), next.getY()));
+    }
     // needs to check if there are no more fruits
   }
   //implement when goal class is added
@@ -96,7 +115,25 @@ public void moveAttempt(int direction) {
 }
 
 public int checkBody() {
-  return 0;
+  int result = 0;
+  LinkedList<Segment> body = map.getPlayer().getBody();
+  for (int i = 0; i < body.size(); i++) {
+    Segment current = body.get(i);
+    boolean checkingAir = true;
+    while (checkingAir) {
+      int count = 0;
+      if (map.getSpaces()[current.getX()][current.getY() - count - 1] instanceof Block) {
+        checkingAir = false;
+      }
+      else {
+        count++;
+      }
+      if (count > result) {
+        result = count;
+      }
+    }
+  }
+  return result;
 }
 
 public void death(){

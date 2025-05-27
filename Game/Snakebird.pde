@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 public class Snakebird {
-  LinkedList<Segment> body;
+  private LinkedList<Segment> body;
   
   public Snakebird(LinkedList<Segment> segments) {
     body = segments;
@@ -46,5 +46,8 @@ public class Snakebird {
   
   public Segment getFront() {
     return body.getFirst();
+  }
+  public LinkedList<Segment> getBody() {
+    return body;
   }
 }
