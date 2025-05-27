@@ -43,4 +43,8 @@ public class Snakebird {
     }
     return result;
   }
+  
+  public Segment getFront() {
+    return body.getFirst();
+  }
 }

@@ -30,3 +30,7 @@ This document must be updated daily every time you finish a work session.
 * Created new accessor and mutator methods in Block and shifted where they were located - 6 minutes
 * Changed plan to reflect changes in block and space - 4 minutes
 * Updated uml diagram - 9 minutes
+
+### 2024-05-26 - Made most of moveAttempt method
+* moveAttempt method now mostly done - 19 minutes
+* Added death and checkBody methods in Game and new getFront method to Snakebird to help with moveAttempt - 2 minutes
