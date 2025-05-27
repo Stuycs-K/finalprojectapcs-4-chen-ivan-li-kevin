@@ -38,17 +38,17 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
 
 # Intended pacing:
 
-* Environment creation [] (Ivan)
-  * Create block object class that extends space [] (estimated done by 5/23)
+* Environment creation [x] (Ivan)
+  * Create block object class that extends space [x] (estimated done by 5/23)
     * Blocks that make up the stage
       * Extended by fruit, segment, and spike, which are their own classes for clarity
-  * Create goal object class [] (estimated done by 5/24)
-    * Boolean variable for if goal open
-    * method to open the goal
-  * Create map object class [] (estimated done by 5/26) (new)
+  ~* Create goal object class [] (estimated done by 5/24)~
+    * Boolean variable for if goal open [x]
+    * method to open the goal [x]
+  * Create map object class [x] (estimated done by 5/26) (new)
     * 2d array of spaces
     * Contains a goal
-    * Method to detect collision
+    ~* Method to detect collision~
     * also contains the player
   * Space object classes [x] (new)
     * a space on the board
