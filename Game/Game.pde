@@ -93,11 +93,11 @@ public void moveAttempt(int direction) {
   }
   else if (next instanceof Fruit) {
     Fruit nextFruit = (Fruit) map.getSpaces()[next.getX()][next.getY()];
-    if (!nextFruit.status()) {
+    //if (!nextFruit.status()) {
       nextFruit.collect();
       map.checkFruit();
       map.getPlayer().expand(new Segment(next.getX(), next.getY()));
-    }
+    //}
     // needs to check if there are no more fruits
   }
   //implement when goal class is added
@@ -115,22 +115,24 @@ public void moveAttempt(int direction) {
 }
 
 public int checkBody() {
-  int result = 0;
+  int result = 10000;
   LinkedList<Segment> body = map.getPlayer().getBody();
   for (int i = 0; i < body.size(); i++) {
     Segment current = body.get(i);
     boolean checkingAir = true;
-    while (checkingAir) {
-      int count = 0;
-      if (map.getSpaces()[current.getX()][current.getY() - count - 1] instanceof Block) {
+    int count = 0;
+    while (checkingAir && current.getY() + count + 1 < map.getSpaces()[0].length) {
+      Space next = map.getSpaces()[current.getX()][current.getY() + count + 1];
+      if (next instanceof Block || next instanceof Fruit || next instanceof Segment || next instanceof Spike) {
         checkingAir = false;
       }
       else {
         count++;
       }
-      if (count > result) {
+      if (count < result) {
         result = count;
       }
+      System.out.println(count);
     }
   }
   return result;
