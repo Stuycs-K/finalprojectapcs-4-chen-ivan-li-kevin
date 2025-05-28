@@ -27,3 +27,7 @@ loadLevel and drawLevel have also been changed in order to fit this new change.
 The player variable is now in the map class, and a snakebird has been added to the first level.
 drawLevel now displays snakebirds as well.
 Also fixed a few bugs from syntax errors(30 minutes)
+
+### 2025-05-27 - Fruit progress
+Fruits now have a field that determines if they have been collected. 
+Map has a method that checks every fruit, and removes any that are collected, then opens the goal if all are collected. (20 minutes)
