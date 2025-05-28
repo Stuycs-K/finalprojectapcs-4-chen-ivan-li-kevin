@@ -108,9 +108,9 @@ public void moveAttempt(int direction) {
   }
   else {
     map.getPlayer().move(direction);
-    if (map.getPlayer().gravity(checkBody(), map)) {
-      death();
-    }
+  }
+  if (map.getPlayer().gravity(checkBody(), map)) {
+    death();
   }
 }
 
