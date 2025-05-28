@@ -13,3 +13,21 @@ After class, wrote the descriptions and details for below the diagram, and fixed
 
 ### 2025-05-21 - Start of coding
 Made a processing sketch, added an environment and completed the block class, though more may be added. Also implemented a debug toggle that creates a grid that makes it easier to visualize where the blocks will be (~30 minutes)
+
+### 2025-05-22 - Environment progress
+New classes - fruit, spike that both extend block, with no new methods
+This is to allow the use of instanceof to distinguish between special behaviors (5 minutes)
+Additionally, a new class was added, Map, that is used to contain the location of every block and fruit.
+This class uses the loadLevel method to load a preset stage. (25 minutes)
+A new method in Game has been added, drawLevel, that displays everything present. (5 minutes)
+
+### 2025-05-25 - Bug fixes and overhauls
+Map has been overhauled to now use a 2D array of spaces (new class made by partner as a parent of block)
+loadLevel and drawLevel have also been changed in order to fit this new change. 
+The player variable is now in the map class, and a snakebird has been added to the first level.
+drawLevel now displays snakebirds as well.
+Also fixed a few bugs from syntax errors(30 minutes)
+
+### 2025-05-27 - Fruit progress
+Fruits now have a field that determines if they have been collected. 
+Map has a method that checks every fruit, and removes any that are collected, then opens the goal if all are collected. (20 minutes)
