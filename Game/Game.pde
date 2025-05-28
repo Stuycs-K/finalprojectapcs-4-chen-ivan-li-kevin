@@ -115,7 +115,6 @@ public void moveAttempt(int direction) {
 }
 
 public int checkBody() {
-  System.out.println("New");
   int result = 10000;
   LinkedList<Segment> body = map.getPlayer().getBody();
   for (int i = 0; i < body.size(); i++) {
@@ -129,7 +128,6 @@ public int checkBody() {
       }
       else {
         count++;
-        System.out.println(count);
       }
     }
     if (count < result) {
