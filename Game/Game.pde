@@ -115,6 +115,7 @@ public void moveAttempt(int direction) {
 }
 
 public int checkBody() {
+  System.out.println("New");
   int result = 10000;
   LinkedList<Segment> body = map.getPlayer().getBody();
   for (int i = 0; i < body.size(); i++) {
@@ -123,16 +124,16 @@ public int checkBody() {
     int count = 0;
     while (checkingAir && current.getY() + count + 1 < map.getSpaces()[0].length) {
       Space next = map.getSpaces()[current.getX()][current.getY() + count + 1];
-      if (next instanceof Block || next instanceof Fruit || next instanceof Segment || next instanceof Spike) {
+      if (next instanceof Block) {
         checkingAir = false;
       }
       else {
         count++;
+        System.out.println(count);
       }
-      if (count < result) {
-        result = count;
-      }
-      System.out.println(count);
+    }
+    if (count < result) {
+      result = count;
     }
   }
   return result;
