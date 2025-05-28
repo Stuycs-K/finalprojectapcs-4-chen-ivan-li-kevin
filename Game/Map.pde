@@ -37,6 +37,7 @@ public class Map{
   public void checkFruit(){
     for (int i = 0; i < fruits.size(); i++){
       if (fruits.get(i).isCollected){
+        spaces[fruits.get(i).getX()][fruits.get(i).getY()] = null;
         fruits.remove(i);
         i--;
       }
