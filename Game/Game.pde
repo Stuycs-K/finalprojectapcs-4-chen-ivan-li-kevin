@@ -142,4 +142,11 @@ public int checkBody() {
 }
 
 public void death(){
+  LinkedList<Segment> body = map.getPlayer().getBody();
+  while (body.size() > 0){
+    body.removeFirst();
+  }
+  //textSize(120);
+  //fill(#000000);
+  //text("Game Over!", 0, 0);
 }
