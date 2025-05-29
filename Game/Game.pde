@@ -1,6 +1,7 @@
 boolean debugGrid = false;
 int[][] grid;
 int ratio;
+boolean dead;
 Map map;
 void setup() {
   size(900, 900);
@@ -21,23 +22,24 @@ void setup() {
 }
 void draw(){};
 void keyPressed(){
-  if (key == 'w') {
-    moveAttempt(1);
-  }
-  if (key == 'd') {
-    moveAttempt(2);
-  }
-  if (key == 's') {
-    moveAttempt(3);
-  }
-  if (key == 'a') {
-    moveAttempt(4);
-  }
   if (key == 'r'){
+    dead = false;
     map.loadLevel(1);
+  }if (!dead){
+    if (key == 'w') {
+      moveAttempt(1);
+    }if (key == 'd') {
+      moveAttempt(2);
+    }if (key == 's') {
+      moveAttempt(3);
+    }if (key == 'a') {
+      moveAttempt(4);
+    }
+    if(!dead){
+    background(255);
+    drawLevel();
+    }
   }
-  background(255);
-  drawLevel();
 }
 public void drawLevel(){
   Space[][] spaceMap = map.getSpaces();
@@ -142,11 +144,16 @@ public int checkBody() {
 }
 
 public void death(){
+  dead = true;
   LinkedList<Segment> body = map.getPlayer().getBody();
   while (body.size() > 0){
     body.removeFirst();
   }
-  //textSize(120);
-  //fill(#000000);
-  //text("Game Over!", 0, 0);
+  background(255);
+  drawLevel();
+  textSize(120);
+  fill(#000000);
+  text("Game Over!", 150, 200);
+  textSize(45);
+  text("Press R to restart the level.", 200, 280);
 }
