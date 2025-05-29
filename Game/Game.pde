@@ -1,4 +1,4 @@
-boolean debugGrid = true;
+boolean debugGrid = false;
 int[][] grid;
 int ratio;
 Map map;
@@ -32,6 +32,9 @@ void keyPressed(){
   }
   if (key == 'a') {
     moveAttempt(4);
+  }
+  if (key == 'r'){
+    map.loadLevel(1);
   }
   background(255);
   drawLevel();
@@ -115,7 +118,6 @@ public void moveAttempt(int direction) {
 }
 
 public int checkBody() {
-  System.out.println("New");
   int result = 10000;
   LinkedList<Segment> body = map.getPlayer().getBody();
   for (int i = 0; i < body.size(); i++) {
@@ -129,13 +131,13 @@ public int checkBody() {
       }
       else {
         count++;
-        System.out.println(count);
       }
     }
     if (count < result) {
       result = count;
     }
   }
+  System.out.println(result);
   return result;
 }
 
