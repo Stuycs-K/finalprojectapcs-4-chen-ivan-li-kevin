@@ -1,4 +1,4 @@
-boolean debugGrid = true;
+boolean debugGrid = false;
 int[][] grid;
 int ratio;
 Map map;
@@ -32,6 +32,9 @@ void keyPressed(){
   }
   if (key == 'a') {
     moveAttempt(4);
+  }
+  if (key == 'r'){
+    map.loadLevel(1);
   }
   background(255);
   drawLevel();
