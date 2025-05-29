@@ -81,38 +81,54 @@ public void drawLevel(){
 // 1 = north, 2 = east, 3 = south, 4 = west
 public void moveAttempt(int direction) {
   Space next;
+  LinkedList<Segment> body = map.getPlayer().getBody();
+  boolean go = true;
+  int nextX;
+  int nextY;
   if (direction == 1) {
-    next = map.getSpaces()[map.getPlayer().getFront().getX()][map.getPlayer().getFront().getY() - 1];
+    nextX = map.getPlayer().getFront().getX();
+    nextY = map.getPlayer().getFront().getY() - 1;
   }
   else if (direction == 2) {
-    next = map.getSpaces()[map.getPlayer().getFront().getX() + 1][map.getPlayer().getFront().getY()];
+    nextX = map.getPlayer().getFront().getX() + 1;
+    nextY = map.getPlayer().getFront().getY();
   }
   else if (direction == 3) {
-    next = map.getSpaces()[map.getPlayer().getFront().getX()][map.getPlayer().getFront().getY() + 1];
-  }
-  else{
-    next = map.getSpaces()[map.getPlayer().getFront().getX() - 1][map.getPlayer().getFront().getY()];
-  }
-  if (next instanceof Spike) {
-    death();
-  }
-  else if (next instanceof Fruit) {
-    Fruit nextFruit = (Fruit) map.getSpaces()[next.getX()][next.getY()];
-    //if (!nextFruit.status()) {
-      nextFruit.collect();
-      map.checkFruit();
-      map.getPlayer().expand(new Segment(next.getX(), next.getY()));
-    //}
-    // needs to check if there are no more fruits
-  }
-  //implement when goal class is added
-  //else if(next instanceof Goal) {
-  //  win();
-  //}
-  else if (next instanceof Block) {
+    nextX = map.getPlayer().getFront().getX();
+    nextY = map.getPlayer().getFront().getY() + 1;
   }
   else {
-    map.getPlayer().move(direction);
+    nextX = map.getPlayer().getFront().getX() - 1;
+    nextY = map.getPlayer().getFront().getY();
+  }
+  next = map.getSpaces()[nextX][nextY];
+  for (int i = 0; i < body.size(); i++) {
+    if (nextX == body.get(i).getX() && nextY == body.get(i).getY()) {
+      go = false;
+    }
+  }
+  if (go) {
+    if (next instanceof Spike) {
+      death();
+    }
+    else if (next instanceof Fruit) {
+      Fruit nextFruit = (Fruit) map.getSpaces()[next.getX()][next.getY()];
+      //if (!nextFruit.status()) {
+        nextFruit.collect();
+        map.checkFruit();
+        map.getPlayer().expand(new Segment(next.getX(), next.getY()));
+      //}
+      // needs to check if there are no more fruits
+    }
+    //implement when goal class is added
+    //else if(next instanceof Goal) {
+    //  win();
+    //}
+    else if (next instanceof Block) {
+    }
+    else {
+      map.getPlayer().move(direction);
+    }
   }
   if (map.getPlayer().gravity(checkBody(), map)) {
     death();
