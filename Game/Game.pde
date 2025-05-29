@@ -134,6 +134,7 @@ public int checkBody() {
       result = count;
     }
   }
+  System.out.println(result);
   return result;
 }
 

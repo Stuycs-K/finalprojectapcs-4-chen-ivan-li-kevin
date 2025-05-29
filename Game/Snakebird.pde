@@ -31,17 +31,22 @@ public class Snakebird {
   }
   
   //just moves everything down
-  //return true when lands on a spike
+  //return true when lands on a spike or void
   public boolean gravity(int y, Map m) {
-    boolean result = false;
-    Space[][] map = m.getSpaces();
-    for (int i = 0; i < body.size(); i++) {
-      body.get(i).changeY(y);
-      if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike) {
-        result = true;
+    try {
+      boolean result = false;
+      Space[][] map = m.getSpaces();
+      for (int i = 0; i < body.size(); i++) {
+        body.get(i).changeY(y);
+        if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike) {
+          result = true;
+        }
       }
+      return result;
     }
-    return result;
+    catch(IndexOutOfBoundsException e) {
+      return true;
+    }
   }
   
   public Segment getFront() {
