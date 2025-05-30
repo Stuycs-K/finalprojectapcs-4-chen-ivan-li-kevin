@@ -1,7 +1,8 @@
-boolean debugGrid = false;
+boolean debugGrid = true;
 int[][] grid;
 int ratio;
 boolean dead;
+int test = 0;
 Map map;
 void setup() {
   size(1200, 900);
@@ -50,6 +51,7 @@ public void drawLevel(){
   Space[][] spaceMap = map.getSpaces();
   if (map.opened()){
     fill(#FF00FF);
+    System.out.println("open" + test++);
     circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
   }
   for (int i = 0; i < spaceMap.length; i++){
@@ -90,6 +92,12 @@ public void drawLevel(){
 }
 public void makeSpike(int x, int y){
   fill(127);
+  noStroke();
+  triangle(x*ratio + ratio/4, y*ratio + ratio/4, x*ratio + ratio/2, y*ratio + ratio/4, x*ratio + 3*ratio/8, y*ratio); 
+  triangle(x*ratio + ratio/2, y*ratio + ratio/4, x*ratio + 3*ratio/4, y*ratio + ratio/4, x*ratio + 5*ratio/8, y*ratio); 
+  triangle(x*ratio + ratio/4, y*ratio + 3*ratio/4, x*ratio + ratio/2, y*ratio + 3*ratio/4, x*ratio + 3*ratio/8, y*ratio+ratio); 
+  triangle(x*ratio + ratio/2, y*ratio + 3*ratio/4, x*ratio + 3*ratio/4, y*ratio + 3*ratio/4, x*ratio + 5*ratio/8, y*ratio+ratio); 
+  stroke(200);
   square(x*ratio + ratio/4, y*ratio + ratio/4, ratio/2);
 }
 // 1 = north, 2 = east, 3 = south, 4 = west

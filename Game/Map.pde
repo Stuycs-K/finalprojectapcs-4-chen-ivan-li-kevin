@@ -12,6 +12,7 @@ public class Map{
   public void loadLevel(int level){
     goalOpen = false;
     LinkedList<Segment> playerParts = new LinkedList<Segment>();
+    fruits = new ArrayList<Fruit>();
     if (level == 1){
       spaces = new Space[20][15];
       for (int i = 5; i < 15; i++){
