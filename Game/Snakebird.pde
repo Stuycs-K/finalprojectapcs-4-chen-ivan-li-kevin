@@ -38,7 +38,7 @@ public class Snakebird {
       Space[][] map = m.getSpaces();
       for (int i = 0; i < body.size(); i++) {
         body.get(i).changeY(y);
-        if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike) {
+        if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike && y != 0) {
           result = true;
         }
       }
