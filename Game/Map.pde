@@ -10,20 +10,24 @@ public class Map{
     fruits = new ArrayList<Fruit>();
   }
   public void loadLevel(int level){
+    goalOpen = false;
     LinkedList<Segment> playerParts = new LinkedList<Segment>();
     if (level == 1){
-      spaces = new Space[15][15];
-      for (int i = 3; i < 12; i++){
+      spaces = new Space[20][15];
+      for (int i = 5; i < 15; i++){
         spaces[i][10] = new Block(i, 10);
       }
-      fruits.add(new Fruit(7,7));
-      spaces[7][7] = fruits.get(0);
-      goal = new int[]{7,10};
-      for (int i = 5; i < 9; i++){
+      addFruit(9,6);
+      goal = new int[]{12,5};
+      for (int i = 8; i < 12; i++){
         playerParts.add(new Segment(i, 9));
       }
     }
     player = new Snakebird(playerParts);
+  }
+  private void addFruit(int x, int y){ // convenience
+    fruits.add(new Fruit(x, y));
+    spaces[x][y] = fruits.get(fruits.size()-1);
   }
   public Space[][] getSpaces(){
     return spaces;

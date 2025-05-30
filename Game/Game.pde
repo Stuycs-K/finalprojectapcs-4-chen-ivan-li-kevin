@@ -4,20 +4,20 @@ int ratio;
 boolean dead;
 Map map;
 void setup() {
-  size(900, 900);
+  size(1200, 900);
   background(255);
-  grid = new int[15][15];
+  map = new Map();
+  map.loadLevel(1);
+  grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
   ratio = Math.min(width/grid.length, height/grid[0].length);
-  stroke(color(200));
-  if (debugGrid){
+  if (debugGrid){;
+    stroke(color(200));
     for(int i = 0; i < grid.length; i++){
       for (int j = 0; j < grid[0].length; j++){
         square(i*ratio, j*ratio, ratio);
       }
     }
   }
-  map = new Map();
-  map.loadLevel(1);
   drawLevel();
 }
 void draw(){};
@@ -43,6 +43,10 @@ void keyPressed(){
 }
 public void drawLevel(){
   Space[][] spaceMap = map.getSpaces();
+  if (map.opened()){
+    fill(#FF00FF);
+    circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
+  }
   for (int i = 0; i < spaceMap.length; i++){
     for (int j = 0; j < spaceMap[i].length; j++){
       if (spaceMap[i][j] != null){
@@ -155,7 +159,7 @@ public int checkBody() {
       result = count;
     }
   }
-  System.out.println(result);
+  //System.out.println(result);
   return result;
 }
 
@@ -168,7 +172,7 @@ public void death(){
   background(255);
   drawLevel();
   textSize(120);
-  fill(#000000);
+  fill(0);
   text("Game Over!", 150, 200);
   textSize(45);
   text("Press R to restart the level.", 200, 280);
