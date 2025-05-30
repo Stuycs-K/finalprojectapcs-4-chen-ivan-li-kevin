@@ -59,6 +59,8 @@ public void drawLevel(){
         if (currentBlock instanceof Fruit){
           fill(#FF0000);
           circle(i*ratio + ratio/2, (j*ratio) + ratio/2, 4*ratio/5);
+        }else if (currentBlock instanceof Spike){
+          makeSpike(i,j);
         }else{
           if (!debugGrid){
             noStroke();
@@ -86,7 +88,10 @@ public void drawLevel(){
     }
   }
 }
-
+public void makeSpike(int x, int y){
+  fill(127);
+  square(x*ratio + ratio/4, y*ratio + ratio/4, ratio/2);
+}
 // 1 = north, 2 = east, 3 = south, 4 = west
 public void moveAttempt(int direction) {
   Space next;

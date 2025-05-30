@@ -19,6 +19,7 @@ public class Map{
       }
       addFruit(9,6);
       goal = new int[]{12,5};
+      spaces[4][9] = new Spike(4,9);
       for (int i = 8; i < 12; i++){
         playerParts.add(new Segment(i, 9));
       }
