@@ -41,7 +41,7 @@ public class Snakebird {
         if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike && y != 0) {
           result = true;
         }
-        if (y == 0 && !(map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike)) {
+        if (y == 0 && !(map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike) && !(map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Segment) && (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Block)) {
           result = false;
         }
       }
