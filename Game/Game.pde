@@ -4,23 +4,25 @@ int ratio;
 boolean dead;
 Map map;
 void setup() {
-  size(900, 900);
+  size(1200, 900);
   background(255);
-  grid = new int[15][15];
-  ratio = Math.min(width/grid.length, height/grid[0].length);
-  stroke(color(200));
-  if (debugGrid){
-    for(int i = 0; i < grid.length; i++){
-      for (int j = 0; j < grid[0].length; j++){
-        square(i*ratio, j*ratio, ratio);
-      }
-    }
-  }
   map = new Map();
   map.loadLevel(1);
+  grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
+  ratio = Math.min(width/grid.length, height/grid[0].length);
+  if (debugGrid) makeGrid();
   drawLevel();
 }
 void draw(){};
+void makeGrid(){
+  fill(255);
+  stroke(color(200));
+  for(int i = 0; i < grid.length; i++){
+    for (int j = 0; j < grid[0].length; j++){
+     square(i*ratio, j*ratio, ratio);
+    }
+  }
+}
 void keyPressed(){
   if (key == 'r'){
     dead = false;
@@ -34,15 +36,22 @@ void keyPressed(){
       moveAttempt(3);
     }if (key == 'a') {
       moveAttempt(4);
-    }
+    }//if (key == 'x'){
+    //  win(); // debug
+    //}
     if(!dead){
     background(255);
-    drawLevel();
+    if (debugGrid) makeGrid();
+    drawLevel();  
     }
   }
 }
 public void drawLevel(){
   Space[][] spaceMap = map.getSpaces();
+  if (map.opened()){
+    fill(#FF00FF);
+    circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
+  }
   for (int i = 0; i < spaceMap.length; i++){
     for (int j = 0; j < spaceMap[i].length; j++){
       if (spaceMap[i][j] != null){
@@ -108,7 +117,10 @@ public void moveAttempt(int direction) {
     }
   }
   if (go) {
-    if (next instanceof Spike) {
+    if(map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
+      win();
+    }
+    else if (next instanceof Spike) {
       death();
     }
     else if (next instanceof Fruit) {
@@ -155,10 +167,24 @@ public int checkBody() {
       result = count;
     }
   }
-  System.out.println(result);
+  //System.out.println(result);
   return result;
 }
-
+public void win(){
+  dead = true;
+  LinkedList<Segment> body = map.getPlayer().getBody();
+  while (body.size() > 0){
+    body.removeFirst();
+  }
+  background(255);
+  drawLevel();
+  textSize(120);
+  fill(0);
+  text("You Win!", width/2-220, 200);
+  textSize(30);
+  //text("Press space to progress to the next level", width/2-250, 240);
+  text("Press R to restart the level.", width/2-170, 280);
+}
 public void death(){
   dead = true;
   LinkedList<Segment> body = map.getPlayer().getBody();
@@ -168,8 +194,8 @@ public void death(){
   background(255);
   drawLevel();
   textSize(120);
-  fill(#000000);
-  text("Game Over!", 150, 200);
-  textSize(45);
-  text("Press R to restart the level.", 200, 280);
+  fill(0);
+  text("Game Over!", width/2-300, 200);
+  textSize(30);
+  text("Press R to restart the level.", width/2-170, 280);
 }
