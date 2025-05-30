@@ -31,3 +31,13 @@ Also fixed a few bugs from syntax errors(30 minutes)
 ### 2025-05-27 - Fruit progress
 Fruits now have a field that determines if they have been collected. 
 Map has a method that checks every fruit, and removes any that are collected, then opens the goal if all are collected. (20 minutes)
+
+### 2025-05-28 - Fruit finished
+Fruit are now collected properly. (10 minutes)
+Started progress on making sure the game over works properly
+
+### 2025-05-29 - End screens
+Added reset button that fully resets the state to the start of the level (5 minutes)
+Game over when snakebird falls into the abyss works properly (25 minutes)
+Goal now appears on the board when all fruit are collected
+Entering the goal with the head now triggers a win (30 minutes)
