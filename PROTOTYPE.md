@@ -71,11 +71,11 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
   * ~If non head body part interacts, just acts like a block~
 
 * Complete game class [] (estimated done by 5/28) (Kevin)
-  * moveAttempt(int direction) method to be called when movement key pressed; determines if the block the player wants to move to is a spike, fruit, block, segment, goal, or empty
+  * moveAttempt(int direction) method to be called when movement key pressed; determines if the block the player wants to move to is a spike, fruit, block, segment, goal, or empty [x]
     * calls move(direction) when space is empty
     * calls expand(direction) when space is fruit
-  * checkBody() finds how far the player should fall; can return 0
-  * death() turns end variable to true, which causes an animation to play in draw
+  * checkBody() finds how far the player should fall; can return 0 [x]
+  * death() turns end variable to true, which causes an animation to play in draw [x]
   * win() turns win variable to true, which will remove a segment each time draw is called to simulate the player entering the portal
   * loadLevel(int level) to load in the different levels
 
