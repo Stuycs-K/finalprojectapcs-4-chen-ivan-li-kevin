@@ -35,6 +35,13 @@ This document must be updated daily every time you finish a work session.
 * moveAttempt method now mostly done - 19 minutes
 * Added death and checkBody methods in Game and new getFront method to Snakebird to help with moveAttempt - 2 minutes
 
-### 2024-05-26 - Finished moveAttempt and made most of checkBody
+### 2024-05-27 - Finished moveAttempt and made most of checkBody
 * moveAttempt finished and added if statements in keyPressed so the snakebird actually moves - 14 minutes
 * Finished most of checkBody so that the gravity is functional until the snakebird falls into the void - 38 minutes
+
+### 2024-05-28 - More checkBody fixes
+* checkBody now occurs after every moveAttempt, not just after a sucessful move - 6 minutes
+
+### 2024-05-29 - Movement fixes
+* error thrown by gravity when snakebird falls into void now caught - 9 minutes
+* snakebird can no longer move into itself - 14 minutes
