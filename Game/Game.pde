@@ -7,7 +7,7 @@ void setup() {
   size(1200, 900);
   background(255);
   map = new Map();
-  map.loadLevel(1);
+  map.loadLevel(2);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
   ratio = Math.min(width/grid.length, height/grid[0].length);
   if (debugGrid) makeGrid();
