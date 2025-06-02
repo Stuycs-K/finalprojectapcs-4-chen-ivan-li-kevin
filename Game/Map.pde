@@ -32,6 +32,7 @@ public class Map{
       for (int i = 9; i > 7; i--){
         playerParts.add(new Segment(i, 9));
       }
+      player.add(new Snakebird(playerParts));
     }
     if (level == 2){
       spaces = new Space[20][15];
@@ -66,6 +67,7 @@ public class Map{
       playerParts.add(new Segment(13, 10));
       playerParts.add(new Segment(14, 10));
       playerParts.add(new Segment(14, 9));
+      player.add(new Snakebird(playerParts));
     }
     if (level == 3){
       spaces = new Space[20][15];
@@ -87,6 +89,7 @@ public class Map{
       playerParts.add(new Segment(7, 7));
       playerParts.add(new Segment(6, 7));
       playerParts.add(new Segment(6, 8));
+      player.add(new Snakebird(playerParts));
     }
     if (level == 4){ 
       spaces = new Space[20][15];
@@ -110,8 +113,30 @@ public class Map{
         playerParts.add(new Segment(i, 5));
       }
       playerParts.add(new Segment(8, 6));
+      player.add(new Snakebird(playerParts));
     }
-    player.add(new Snakebird(playerParts));
+    if (level == 5){ 
+      spaces = new Space[20][15];
+      for (int i = 14; i < 18; i++) {
+        spaces[i][13] = new Block(i , 13);
+      }
+      spaces[11][12] = new Block(11, 12);
+      spaces[11][11] = new Block(11, 11);
+      for (int i = 11; i > 8; i--) {
+        spaces[8][i] = new Block(8, i);
+      }
+      spaces[11][7] = new Block(11, 7);
+      goal = new int[]{14,5};
+      for (int i = 14; i < 17; i++){
+        playerParts.add(new Segment(i, 12));
+      }
+      player.add(new Snakebird(playerParts));
+      playerParts = new LinkedList<Segment>();
+      // not done
+      for (int i = 14; i < 17; i++){
+        playerParts.add(new Segment(i, 12));
+      }
+    }
   }
   private void addFruit(int x, int y){ // convenience
     fruits.add(new Fruit(x, y));
