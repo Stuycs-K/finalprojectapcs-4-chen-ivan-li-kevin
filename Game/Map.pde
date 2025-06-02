@@ -10,6 +10,7 @@ public class Map{
     fruits = new ArrayList<Fruit>();
   }
   public void loadLevel(int level){
+    fruits = new ArrayList<Fruit>();
     goalOpen = false;
     LinkedList<Segment> playerParts = new LinkedList<Segment>();
     if (level == 1){
@@ -82,6 +83,7 @@ public class Map{
     return player;
   }
   public void checkFruit(){
+    //System.out.println(fruits.size());
     for (int i = 0; i < fruits.size(); i++){
       if (fruits.get(i).isCollected){
         spaces[fruits.get(i).getX()][fruits.get(i).getY()] = null;
