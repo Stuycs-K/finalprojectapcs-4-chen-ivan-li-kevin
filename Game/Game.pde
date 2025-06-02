@@ -1,6 +1,6 @@
 boolean debugGrid = false;
 int[][] grid;
-int ratio, currentLevel;
+int ratio, currentLevel, currentPlayer;
 boolean dead, win;
 int debug;
 Map map;
@@ -11,6 +11,7 @@ void setup() {
   dead = false;
   win = false;
   currentLevel = 1;
+  currentPlayer = 0;
   map.loadLevel(currentLevel);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
   ratio = Math.min(width/grid.length, height/grid[0].length);
@@ -31,6 +32,7 @@ void keyPressed(){
   map.checkFruit();
   if (win && key == ' '){
     currentLevel++;
+    currentPlayer = 0;
     dead = false;
     win = false;
     if (currentLevel >= 5){
@@ -59,6 +61,9 @@ void keyPressed(){
     }//if (key == 'x'){
     //  win(); // debug
     //}
+    if (key == 'e') {
+      currentPlayer = (currentPlayer + 1) % map.getPlayers().size();
+    }
     if(!dead && !win){
       background(255);
       if (debugGrid){
@@ -96,9 +101,9 @@ public void drawLevel(){
     }
   }
   boolean altColor = true;
-  for (Segment part : map.getPlayer().body){
+  for (Segment part : map.getPlayer(currentPlayer).body){
     noStroke();
-    if (part == map.getPlayer().body.peek()){// extra code for head. dont want to design yet
+    if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head. dont want to design yet
       fill(#18d11e);
       square(part.getX()*ratio, part.getY()*ratio, ratio);
       fill(#ffd603);
@@ -131,25 +136,25 @@ public void makeSpike(int x, int y){
 // 1 = north, 2 = east, 3 = south, 4 = west
 public void moveAttempt(int direction) {
   Space next;
-  LinkedList<Segment> body = map.getPlayer().getBody();
+  LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
   boolean go = true;
   int nextX;
   int nextY;
   if (direction == 1) {
-    nextX = map.getPlayer().getFront().getX();
-    nextY = map.getPlayer().getFront().getY() - 1;
+    nextX = map.getPlayer(currentPlayer).getFront().getX();
+    nextY = map.getPlayer(currentPlayer).getFront().getY() - 1;
   }
   else if (direction == 2) {
-    nextX = map.getPlayer().getFront().getX() + 1;
-    nextY = map.getPlayer().getFront().getY();
+    nextX = map.getPlayer(currentPlayer).getFront().getX() + 1;
+    nextY = map.getPlayer(currentPlayer).getFront().getY();
   }
   else if (direction == 3) {
-    nextX = map.getPlayer().getFront().getX();
-    nextY = map.getPlayer().getFront().getY() + 1;
+    nextX = map.getPlayer(currentPlayer).getFront().getX();
+    nextY = map.getPlayer(currentPlayer).getFront().getY() + 1;
   }
   else {
-    nextX = map.getPlayer().getFront().getX() - 1;
-    nextY = map.getPlayer().getFront().getY();
+    nextX = map.getPlayer(currentPlayer).getFront().getX() - 1;
+    nextY = map.getPlayer(currentPlayer).getFront().getY();
   }
   next = map.getSpaces()[nextX][nextY];
   for (int i = 0; i < body.size(); i++) {
@@ -168,22 +173,22 @@ public void moveAttempt(int direction) {
       Fruit nextFruit = (Fruit) map.getSpaces()[next.getX()][next.getY()];
       nextFruit.collect();
       map.checkFruit();
-      map.getPlayer().expand(new Segment(next.getX(), next.getY()));
+      map.getPlayer(currentPlayer).expand(new Segment(next.getX(), next.getY()));
     }
     else if (next instanceof Block) {
     }
     else {
-      map.getPlayer().move(direction);
+      map.getPlayer(currentPlayer).move(direction);
     }
   }
-  if (map.getPlayer().gravity(checkBody(), map)) {
+  if (map.getPlayer(currentPlayer).gravity(checkBody(), map)) {
     death();
   }
 }
 
 public int checkBody() {
   int result = 10000;
-  LinkedList<Segment> body = map.getPlayer().getBody();
+  LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
   for (int i = 0; i < body.size(); i++) {
     Segment current = body.get(i);
     boolean checkingAir = true;
@@ -207,7 +212,7 @@ public int checkBody() {
 
 public void win(){
   win = true;
-  LinkedList<Segment> body = map.getPlayer().getBody();
+  LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
   while (body.size() > 0){
     body.removeFirst();
   }
@@ -223,7 +228,7 @@ public void win(){
 
 public void death(){
   dead = true;
-  LinkedList<Segment> body = map.getPlayer().getBody();
+  LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
   while (body.size() > 0){
     body.removeFirst();
   }
