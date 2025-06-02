@@ -55,3 +55,13 @@ Game over when snakebird falls into the abyss works properly (25 minutes)
 Goal now appears on the board when all fruit are collected
 
 Entering the goal with the head now triggers a win (30 minutes)
+
+### 2025-05-30 - spike indicator
+Started working on the display for the spike object, around 2/3 of the way done (30 minutes)
+
+### 2025-06-01 - Polishing levels
+Overhauled the win code, and added a new int that tracks the level (25 minutes)
+
+Indicator added for the head of the snakebird(5 minutes)
+
+Special endscreen for once every level is done (5 minutes)
