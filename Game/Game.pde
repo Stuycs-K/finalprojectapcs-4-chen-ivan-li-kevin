@@ -1,13 +1,17 @@
 boolean debugGrid = false;
 int[][] grid;
-int ratio;
-boolean dead;
+int ratio, currentLevel;
+boolean dead, win;
+int debug;
 Map map;
 void setup() {
   size(1200, 900);
   background(255);
   map = new Map();
-  map.loadLevel(1);
+  dead = false;
+  win = false;
+  currentLevel = 1;
+  map.loadLevel(currentLevel);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
   ratio = Math.min(width/grid.length, height/grid[0].length);
   if (debugGrid) makeGrid();
@@ -24,10 +28,26 @@ void makeGrid(){
   }
 }
 void keyPressed(){
-  if (key == 'r'){
+  map.checkFruit();
+  if (win && key == ' '){
+    currentLevel++;
     dead = false;
-    map.loadLevel(1);
-  }if (!dead){
+    win = false;
+    if (currentLevel >= 3){
+      background(255);
+      dead = true;
+      textSize(60);
+      fill(0);
+      text("no more levels for now", width/2-400, 200);
+    }else{
+      map.loadLevel(currentLevel);
+    }
+  }
+  if (key == 'r' && !(currentLevel >= 3)){
+    dead = false;
+    win = false;
+    map.loadLevel(currentLevel);
+  }if (!dead && !win){
     if (key == 'w') {
       moveAttempt(1);
     }if (key == 'd') {
@@ -39,10 +59,12 @@ void keyPressed(){
     }//if (key == 'x'){
     //  win(); // debug
     //}
-    if(!dead){
-    background(255);
-    if (debugGrid) makeGrid();
-    drawLevel();  
+    if(!dead && !win){
+      background(255);
+      if (debugGrid){
+        makeGrid();
+      }
+      drawLevel();  
     }
   }
 }
@@ -77,6 +99,8 @@ public void drawLevel(){
     if (part == map.getPlayer().body.peek()){// extra code for head. dont want to design yet
       fill(#18d11e);
       square(part.getX()*ratio, part.getY()*ratio, ratio);
+      fill(#ffd603);
+      circle(part.getX()*ratio + ratio/2, part.getY()*ratio + ratio/2, 2*ratio/3);
     }else{
       if (altColor){
         fill(#47db47);
@@ -128,7 +152,7 @@ public void moveAttempt(int direction) {
     }
   }
   if (go) {
-    if(map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
+    if(map.opened() && map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
       win();
     }
     else if (next instanceof Spike) {
@@ -182,7 +206,7 @@ public int checkBody() {
   return result;
 }
 public void win(){
-  dead = true;
+  win = true;
   LinkedList<Segment> body = map.getPlayer().getBody();
   while (body.size() > 0){
     body.removeFirst();
@@ -193,7 +217,7 @@ public void win(){
   fill(0);
   text("You Win!", width/2-220, 200);
   textSize(30);
-  //text("Press space to progress to the next level", width/2-250, 240);
+  text("Press space to progress to the next level", width/2-250, 240);
   text("Press R to restart the level.", width/2-170, 280);
 }
 public void death(){
