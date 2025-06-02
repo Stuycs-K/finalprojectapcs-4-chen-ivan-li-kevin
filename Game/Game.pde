@@ -117,7 +117,7 @@ public void moveAttempt(int direction) {
     }
   }
   if (go) {
-    if(map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
+    if(map.opened() && map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
       win();
     }
     else if (next instanceof Spike) {
