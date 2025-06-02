@@ -33,7 +33,7 @@ void keyPressed(){
     currentLevel++;
     dead = false;
     win = false;
-    if (currentLevel >= 4){
+    if (currentLevel >= 5){
       background(255);
       dead = true;
       textSize(60);
@@ -43,7 +43,7 @@ void keyPressed(){
       map.loadLevel(currentLevel);
     }
   }
-  if (key == 'r' && !(currentLevel >= 4)){
+  if (key == 'r' && !(currentLevel >= 5)){
     dead = false;
     win = false;
     map.loadLevel(currentLevel);
