@@ -10,7 +10,7 @@ void setup() {
   map = new Map();
   dead = false;
   win = false;
-  currentLevel = 1;
+  currentLevel = 3;
   map.loadLevel(currentLevel);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
   ratio = Math.min(width/grid.length, height/grid[0].length);
@@ -119,6 +119,10 @@ public void makeSpike(int x, int y){
   triangle(x*ratio + ratio/2, y*ratio + ratio/4, x*ratio + 3*ratio/4, y*ratio + ratio/4, x*ratio + 5*ratio/8, y*ratio); 
   triangle(x*ratio + ratio/4, y*ratio + 3*ratio/4, x*ratio + ratio/2, y*ratio + 3*ratio/4, x*ratio + 3*ratio/8, y*ratio+ratio); 
   triangle(x*ratio + ratio/2, y*ratio + 3*ratio/4, x*ratio + 3*ratio/4, y*ratio + 3*ratio/4, x*ratio + 5*ratio/8, y*ratio+ratio); 
+  triangle(x*ratio + ratio/4, y*ratio + ratio/4, x*ratio + ratio/4, y*ratio + ratio/2, x*ratio, y*ratio + 3*ratio/8); 
+  triangle(x*ratio + ratio/4, y*ratio + ratio/2, x*ratio + ratio/4, y*ratio + 3*ratio/4, x*ratio, y*ratio + 5*ratio/8);  
+  triangle(x*ratio + 3*ratio/4, y*ratio + ratio/4, x*ratio + 3*ratio/4, y*ratio + ratio/2, x*ratio+ratio, y*ratio + 3*ratio/8); 
+  triangle(x*ratio + 3*ratio/4, y*ratio + ratio/2, x*ratio + 3*ratio/4, y*ratio + 3*ratio/4, x*ratio+ratio, y*ratio + 5*ratio/8); 
   stroke(200);
   square(x*ratio + ratio/4, y*ratio + ratio/4, ratio/2);
 }
