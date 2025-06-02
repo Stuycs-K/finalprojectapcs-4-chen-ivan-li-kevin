@@ -33,9 +33,17 @@ void keyPressed(){
     currentLevel++;
     dead = false;
     win = false;
-    map.loadLevel(currentLevel);
+    if (currentLevel >= 3){
+      background(255);
+      dead = true;
+      textSize(60);
+      fill(0);
+      text("no more levels for now", width/2-400, 200);
+    }else{
+      map.loadLevel(currentLevel);
+    }
   }
-  if (key == 'r'){
+  if (key == 'r' && !(currentLevel >= 3)){
     dead = false;
     win = false;
     map.loadLevel(currentLevel);
