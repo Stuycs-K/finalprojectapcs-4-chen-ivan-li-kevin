@@ -10,7 +10,7 @@ void setup() {
   map = new Map();
   dead = false;
   win = false;
-  currentLevel = 3;
+  currentLevel = 1;
   map.loadLevel(currentLevel);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
   ratio = Math.min(width/grid.length, height/grid[0].length);
@@ -70,10 +70,12 @@ void keyPressed(){
 }
 public void drawLevel(){
   Space[][] spaceMap = map.getSpaces();
+  stroke(#FF00FF);
   if (map.opened()){
     fill(#FF00FF);
-    circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
-  }
+  }else{
+    fill(#FFFFFF);
+  }circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
   for (int i = 0; i < spaceMap.length; i++){
     for (int j = 0; j < spaceMap[i].length; j++){
       if (spaceMap[i][j] != null){
