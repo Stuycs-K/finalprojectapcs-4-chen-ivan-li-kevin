@@ -34,18 +34,19 @@ public class Snakebird {
   //return true when lands on a spike or void
   public boolean gravity(int y, Map m) {
     try {
-      boolean result = (y == 0);
+      boolean firstCheck = true;
+      boolean result = false;
       Space[][] map = m.getSpaces();
       for (int i = 0; i < body.size(); i++) {
         body.get(i).changeY(y);
-        if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike && y != 0) {
+        if (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike) {
           result = true;
         }
-        if (y == 0 && !(map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike) && !(map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Segment) && (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Block)) {
-          result = false;
+        if (!(map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Spike) && !(map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Segment) && (map[body.get(i).getX()][body.get(i).getY() + 1] instanceof Block)) {
+          firstCheck = false;
         }
       }
-      return result;
+      return firstCheck && result;
     }
     catch(IndexOutOfBoundsException e) {
       return true;
