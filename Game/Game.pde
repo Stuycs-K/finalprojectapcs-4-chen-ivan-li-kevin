@@ -33,7 +33,7 @@ void keyPressed(){
     currentLevel++;
     dead = false;
     win = false;
-    if (currentLevel >= 3){
+    if (currentLevel >= 4){
       background(255);
       dead = true;
       textSize(60);
@@ -43,7 +43,7 @@ void keyPressed(){
       map.loadLevel(currentLevel);
     }
   }
-  if (key == 'r' && !(currentLevel >= 3)){
+  if (key == 'r' && !(currentLevel >= 4)){
     dead = false;
     win = false;
     map.loadLevel(currentLevel);
@@ -160,17 +160,10 @@ public void moveAttempt(int direction) {
     }
     else if (next instanceof Fruit) {
       Fruit nextFruit = (Fruit) map.getSpaces()[next.getX()][next.getY()];
-      //if (!nextFruit.status()) {
-        nextFruit.collect();
-        map.checkFruit();
-        map.getPlayer().expand(new Segment(next.getX(), next.getY()));
-      //}
-      // needs to check if there are no more fruits
+      nextFruit.collect();
+      map.checkFruit();
+      map.getPlayer().expand(new Segment(next.getX(), next.getY()));
     }
-    //implement when goal class is added
-    //else if(next instanceof Goal) {
-    //  win();
-    //}
     else if (next instanceof Block) {
     }
     else {

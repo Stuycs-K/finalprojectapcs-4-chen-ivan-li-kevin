@@ -65,6 +65,27 @@ public class Map{
       playerParts.add(new Segment(14, 10));
       playerParts.add(new Segment(14, 9));
     }
+    if (level == 3){
+      spaces = new Space[20][15];
+      spaces[7][13] = new Block(7, 13);
+      spaces[12][13] = new Block(12, 13);
+      spaces[13][13] = new Block(13, 13);
+      for (int i = 6; i < 14; i++){
+        spaces[i][12] = new Block(i, 12);
+        spaces[i][11] = new Block(i, 11);
+      }
+      for (int i = 9; i < 14; i++){ 
+        spaces[i][10] = new Block(i, 10);
+      }
+      spaces[8][10] = new Spike(8, 10);
+      spaces[8][9] = new Spike(8, 9);
+      addFruit(7,8);
+      addFruit(12,8);
+      goal = new int[]{10,6};
+      playerParts.add(new Segment(7, 7));
+      playerParts.add(new Segment(6, 7));
+      playerParts.add(new Segment(6, 8));
+    }
     player = new Snakebird(playerParts);
   }
   private void addFruit(int x, int y){ // convenience
