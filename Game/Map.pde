@@ -2,15 +2,17 @@ public class Map{
   private Space[][] spaces;
   private int[] goal;
   private boolean goalOpen;
-  private Snakebird player;
+  private ArrayList<Snakebird> player;
   private ArrayList<Fruit> fruits;
   public Map(){
     goal = new int[]{0,0}; // backup default;
     goalOpen = false;
+    player = new ArrayList<Snakebird>();
     fruits = new ArrayList<Fruit>();
   }
   public void loadLevel(int level){
     fruits = new ArrayList<Fruit>();
+    player = new ArrayList<Snakebird>();
     goalOpen = false;
     LinkedList<Segment> playerParts = new LinkedList<Segment>();
     fruits = new ArrayList<Fruit>();
@@ -109,7 +111,7 @@ public class Map{
       }
       playerParts.add(new Segment(8, 6));
     }
-    player = new Snakebird(playerParts);
+    player.add(new Snakebird(playerParts));
   }
   private void addFruit(int x, int y){ // convenience
     fruits.add(new Fruit(x, y));
@@ -121,7 +123,10 @@ public class Map{
   public int[] getGoal(){
     return goal;
   }
-  public Snakebird getPlayer(){
+  public Snakebird getPlayer(int i){
+    return player.get(i);
+  }
+  public ArrayList<Snakebird> getPlayers(){
     return player;
   }
   public void checkFruit(){
