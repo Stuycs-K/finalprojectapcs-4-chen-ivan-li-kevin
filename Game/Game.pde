@@ -50,19 +50,31 @@ void keyPressed(){
     win = false;
     map.loadLevel(currentLevel);
   }if (!dead && !win){
-    if (key == 'w') {
-      moveAttempt(1);
-    }if (key == 'd') {
-      moveAttempt(2);
-    }if (key == 's') {
-      moveAttempt(3);
-    }if (key == 'a') {
-      moveAttempt(4);
-    }//if (key == 'x'){
-    //  win(); // debug
-    //}
-    if (key == 'e') {
-      currentPlayer = (currentPlayer + 1) % map.getPlayers().size();
+    if (key == CODED){
+      if (keyCode == UP){
+        moveAttempt(1);
+      }if (keyCode == RIGHT){
+        moveAttempt(2);
+      }if (keyCode == DOWN){
+        moveAttempt(3);
+      }if (keyCode == LEFT){
+        moveAttempt(4);
+      }
+    }else{
+      if (key == 'w') {
+        moveAttempt(1);
+      }if (key == 'd') {
+        moveAttempt(2);
+      }if (key == 's') {
+        moveAttempt(3);
+      }if (key == 'a') {
+        moveAttempt(4);
+      }//if (key == 'x'){
+      //  win(); // debug
+      //}
+      if (key == 'e') {
+        currentPlayer = (currentPlayer + 1) % map.getPlayers().size();
+      }
     }
     if(!dead && !win){
       background(255);
