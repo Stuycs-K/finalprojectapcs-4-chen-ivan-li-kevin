@@ -24,11 +24,12 @@ Snakebird is a challenging puzzle game that's based on the hit game Snake. Each 
 
 # Project Design
 
-UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
+Old uml diagram
 
-Old diagram
 ![Old UML diagram](uml.jpg?raw=true "old uml diagram")
-New diagram
+
+New uml diagram
+
 ![New UML diagram](NEWuml.jpg?raw=true "new uml diagram")
 
 Game (the main class): Game has methods and variables for when the player dies and when they win. It also has methods for drawing the game. Lastly, it has methods for user input to determine how the player character should move when the player uses a movement key.
