@@ -1,8 +1,7 @@
-boolean debugGrid = true;
+boolean debugGrid = false;
 int[][] grid;
 int ratio;
 boolean dead;
-int test = 0;
 Map map;
 void setup() {
   size(1200, 900);
@@ -51,7 +50,6 @@ public void drawLevel(){
   Space[][] spaceMap = map.getSpaces();
   if (map.opened()){
     fill(#FF00FF);
-    System.out.println("open" + test++);
     circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
   }
   for (int i = 0; i < spaceMap.length; i++){
