@@ -26,15 +26,20 @@ Snakebird is a challenging puzzle game that's based on the hit game Snake. Each 
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 
-![UML diagram](uml.jpg?raw=true "uml diagram")
+Old diagram
+![Old UML diagram](uml.jpg?raw=true "old uml diagram")
+New diagram
+![New UML diagram](NEWuml.jpg?raw=true "new uml diagram")
 
-Game: main class, will be simulating the game environment.
+Game (the main class): Game has methods and variables for when the player dies and when they win. It also has methods for drawing the game. Lastly, it has methods for user input to determine how the player character should move when the player uses a movement key.
 
-Snakebird: the player controlled class. move will remove the last segment and add one to the front. Segments are stored in a linked list of Segments. Expanding will happen every time a fruit is collected, and will add a new segment to the front, while leaving the other segments untouched. Gravity moves the entire snakebird down until it hits the floor.
+Map (includes all of the elements of the game): Map has all of the levels and the componenets of those levels. It keeps track of the fruits and opens the goal when all fruits of a level are collected. loadLevel method stores all of the levels and loads a level depending on which one the player is on.
 
-Block: environmental block. If a snakebird has no blocks below any segments, it will start falling until it lands on a block or into a spike or the void. If the block is a spike, the game ends when it is touched. If the block is a fruit, it is collectable when the snakebird's head moves directly into it.
+Snakebird (the player controlled class): Segments of the snakebird are stored in a linked list. Move moves the snakebird in the direction indicated by the key pressed by the player. Expanding will happen every time a fruit is collected, and will add a new segment to the front of the snakebird, while leaving the other segments untouched. Gravity moves all segments of the snakebird down until it hits the floor or dies.
 
-A level is created using the block ArrayList in Game, detailing the coordinates of every block. The player's location is initialized at the start with the player Snakebird variable. The goal opens once every fruit in the stage is collected, and results in a victory for the player when they reach an open goal.
+Space (the squares that make up the game): The game is divided into a grid of spaces that are stored in Map. Spaces have an x and a y value.
+
+Block (class for environmental blocks): Blocks are immoveable sqaures on the board that take up a space. A player can land on blocks and stay on top of them, but they can't move into them. If the block is a spike, the player dies when it is touched. If the block is a fruit, it is collected when the snakebird's head moves into it.
 
 # Intended pacing:
 
@@ -43,13 +48,13 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
     * Blocks that make up the stage
       * Extended by fruit, segment, and spike, which are their own classes for clarity
 
-  * ~Create goal object class [] (estimated done by 5/24)~
+  * ~Create goal object class [] (estimated done by 5/24)~ (now just a variable in map)
     * Boolean variable for if goal open [x]
     * method to open the goal [x]
   * Create map object class [x] (estimated done by 5/26) (new)
     * 2d array of spaces
     * Contains a goal
-    * ~Method to detect collision~
+    * ~Method to detect collision~ (just not needed)
     * also contains the player
   * Space object classes [x] (new)
     * a space on the board
@@ -70,7 +75,7 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
   * ~If snake head position = fruit position, fruit collected and remove from the stage~
   * ~If non head body part interacts, just acts like a block~
 
-* Complete game class [] (estimated done by 5/28) (Kevin)
+* Complete game class [x] (estimated done by 5/28) (Kevin)
   * moveAttempt(int direction) method to be called when movement key pressed; determines if the block the player wants to move to is a spike, fruit, block, segment, goal, or empty [x]
     * calls move(direction) when space is empty
     * calls expand(direction) when space is fruit
@@ -78,8 +83,10 @@ A level is created using the block ArrayList in Game, detailing the coordinates 
   * death() turns end variable to true, which causes an animation to play in draw [x]
   * win() turns win variable to true, which will remove a segment each time draw is called to simulate the player entering the portal
   * loadLevel(int level) to load in the different levels
+  * reset button and button to move to next level [x] (NEW)
 
-* Make first stage [] (estimated done by 5/29)
+* Make first stage [x] (estimated done by 5/29)
+* Make first couple of levels [x] (NEW)
 
 * Mutiple Snakebirds [] (OPTIONAL)
   * Arraylist of snakebirds in main game class

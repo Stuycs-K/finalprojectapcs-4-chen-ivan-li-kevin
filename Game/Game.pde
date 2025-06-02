@@ -198,6 +198,7 @@ public int checkBody() {
   //System.out.println(result);
   return result;
 }
+
 public void win(){
   win = true;
   LinkedList<Segment> body = map.getPlayer().getBody();
@@ -213,6 +214,7 @@ public void win(){
   text("Press space to progress to the next level", width/2-250, 240);
   text("Press R to restart the level.", width/2-170, 280);
 }
+
 public void death(){
   dead = true;
   LinkedList<Segment> body = map.getPlayer().getBody();

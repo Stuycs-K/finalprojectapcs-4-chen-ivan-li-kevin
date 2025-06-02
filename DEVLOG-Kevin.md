@@ -45,3 +45,15 @@ This document must be updated daily every time you finish a work session.
 ### 2024-05-29 - Movement fixes
 * error thrown by gravity when snakebird falls into void now caught - 9 minutes
 * snakebird can no longer move into itself - 14 minutes
+
+### 2024-05-30 - Gravity with spikes fixes
+* Tried fixing the gravity method to work properly with spikes - 28 minutes
+
+### 2024-05-31 - Making levels
+* Made levels 1 and 2 from the actual Snakebird game - 17 minutes
+
+### 2024-05-31 - More levels and fixing spikes again
+* Made level 3 - 12 minutes
+* Fixed gravity so that spikes kill properly when moving up to them and doesn't kill when falling on to block next to them - 10 minutes
+* Made level 4 (accidently wrote 5 in the commit message) - 9 minutes
+* Updated uml diagram and the details - 20 minutes
