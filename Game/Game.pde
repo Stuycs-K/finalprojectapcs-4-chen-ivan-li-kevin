@@ -28,6 +28,7 @@ void makeGrid(){
   }
 }
 void keyPressed(){
+  map.checkFruit();
   if (win && key == ' '){
     currentLevel++;
     dead = false;
