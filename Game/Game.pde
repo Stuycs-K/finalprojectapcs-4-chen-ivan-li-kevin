@@ -1,4 +1,4 @@
-boolean debugGrid = false;
+boolean debugGrid = true;
 int[][] grid;
 int ratio, currentLevel, currentPlayer, direction;
 boolean dead, win;
@@ -97,6 +97,7 @@ public void drawLevel(){
         }else if (currentBlock instanceof Spike){
           makeSpike(i,j);
         }else{
+          stroke(200);
           if (!debugGrid){
             noStroke();
           }
@@ -109,16 +110,18 @@ public void drawLevel(){
   for (int i = 0; i < map.getPlayers().size(); i++) { //drawing snakebird
     for (Segment part : map.getPlayer(i).body){
     noStroke();
-    if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head. dont want to design yet
+    if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head
       fill(#18d11e);
       square(part.getX()*ratio, part.getY()*ratio, ratio);
       fill(#ffd603);
       switch(direction){
         case 1:
+          triangle(part.getX()*ratio+ratio/4, part.getY()*ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio, part.getX()*ratio+ratio/2, part.getY()*ratio-ratio/2);
           break;
         case 2:
           break;
         case 3:
+          triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio, part.getX()*ratio+ratio/2, part.getY()*ratio+3*ratio/2);
           break;
         case 4:
           break;
@@ -151,7 +154,6 @@ public void makeSpike(int x, int y){
 }
 // 1 = north, 2 = east, 3 = south, 4 = west
 public void moveAttempt(int direction) {
-  this.direction = direction;
   Space next;
   LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
   boolean go = true;
@@ -228,6 +230,7 @@ public void moveAttempt(int direction) {
     }
     else {
       map.getPlayer(currentPlayer).move(direction);
+      this.direction = direction;
     }
   }
   if (map.getPlayer(currentPlayer).gravity(checkBody(), map)) {
