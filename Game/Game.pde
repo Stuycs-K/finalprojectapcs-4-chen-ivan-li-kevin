@@ -67,6 +67,7 @@ void keyPressed(){
       //  win(); // debug
       //}
       if (key == 'e') {
+        //swaps player, removes the segments of the other snakebird from the map, and adds the segments of the snakebird that was just being controlled and is now inactive
         for (int i = 0; i < map.getSpaces().length; i++) {
           for (int ind = 0; ind < map.getSpaces[i].length; ind++) {
             if (map.getSpaces[i][ind] instanceof Segment) {
@@ -186,7 +187,7 @@ public void moveAttempt(int direction) {
     }
   }
   //checks if pushing other player (WILL ONLY WORK WITH 2 SNAKEBIRDS)  (NOT READY, MAYBE LATER)
-  /*int pushing = -1;
+  int pushing = -1;
   for (int ind = 0; ind < map.getPlayers().size(); ind++) {
     if (ind != currentPlayer) {
       LinkedList<Segment> sb = map.getPlayer(ind).getBody();
@@ -197,23 +198,14 @@ public void moveAttempt(int direction) {
       }
     }
     if (pushing != -1) {
-      LinkedList<Segment> sb = map.getPlayer(pushing).getBody();
-      for (int i = 0; i < sb.size(); i++) {
-        Space test = map.getSpaces()[sb.get(i).getX()][sb.get(i).getY() - 1];
-        if (test instanceof Spike) {
-          death();
-        }
-        else if (test instanceof Block) {
-          go = false;
-        }
-      }
-      if (go) {
-        for (int i = 0; i < sb.size(); i++) {
-          sb.get(i).changeY(-1);
-        }
+      if (pushable(map.getPlayer(pushing), direction)) {
+        
       }
     }
-  }*/
+    if (go) {
+      
+    }
+  }
   //checks the other possible block types
   if (go) {
     if(map.opened() && map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
@@ -239,16 +231,61 @@ public void moveAttempt(int direction) {
   }
 }
 
+//idk what happens when head is pushed into goal
 public boolean pushable(Snakebird other, int direction) {
   if (direction == 1) {
-    for (int i = 0; i < 
+    for (int i = 0; i < other.getBody().size(); i++) {
+      int x = other.getBody().get(i).getX();
+      int y = other.getBody().get(i).getY();
+      if (map.getSpaces()[x][y - 1] instanceof Spike) {
+        death();
+        return false;
+      }
+      else if (map.getSpaces()[x][y - 1] instanceof Block) {
+        return false;
+      }
+    }
   }
   else if (direction == 2) {
+    for (int i = 0; i < other.getBody().size(); i++) {
+      int x = other.getBody().get(i).getX();
+      int y = other.getBody().get(i).getY();
+      if (map.getSpaces()[x + 1][y] instanceof Spike) {
+        death();
+        return false;
+      }
+      else if (map.getSpaces()[x + 1][y] instanceof Block) {
+        return false;
+      }
+    }
   }
   else if (direction == 3) {
+    for (int i = 0; i < other.getBody().size(); i++) {
+      int x = other.getBody().get(i).getX();
+      int y = other.getBody().get(i).getY();
+      if (map.getSpaces()[x][y + 1] instanceof Spike) {
+        death();
+        return false;
+      }
+      else if (map.getSpaces()[x][y + 1] instanceof Block) {
+        return false;
+      }
+    }
   }
   else {
+    for (int i = 0; i < other.getBody().size(); i++) {
+      int x = other.getBody().get(i).getX();
+      int y = other.getBody().get(i).getY();
+      if (map.getSpaces()[x - 1][y] instanceof Spike) {
+        death();
+        return false;
+      }
+      else if (map.getSpaces()[x - 1][y] instanceof Block) {
+        return false;
+      }
+    }
   }
+  return true;
 }
 
 public int checkBody() {
