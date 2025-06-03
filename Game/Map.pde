@@ -136,8 +136,8 @@ public class Map{
         playerParts.add(new Segment(i, 11));
       }
       playerParts.add(new Segment(17, 12));
-      player.add(new Snakebird(playerParts));*/
-    }
+      player.add(new Snakebird(playerParts));
+    }*/
   }
   private void addFruit(int x, int y){ // convenience
     fruits.add(new Fruit(x, y));
