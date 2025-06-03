@@ -144,7 +144,6 @@ public class Map{
       text("no more levels for now", width/2-400, 200);
       return false;
     }
-    player.add(new Snakebird(playerParts));
     return true;
     
   }

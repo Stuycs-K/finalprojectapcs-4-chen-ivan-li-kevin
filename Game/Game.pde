@@ -1,6 +1,6 @@
 boolean debugGrid = false;
 int[][] grid;
-int ratio, currentLevel, currentPlayer;
+int ratio, currentLevel, currentPlayer, direction;
 boolean dead, win;
 int debug;
 Map map;
@@ -87,7 +87,7 @@ public void drawLevel(){
   }else{
     fill(#FFFFFF);
   }circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
-  for (int i = 0; i < spaceMap.length; i++){
+  for (int i = 0; i < spaceMap.length; i++){ //drawing map
     for (int j = 0; j < spaceMap[i].length; j++){
       if (spaceMap[i][j] != null){
         Space currentBlock = spaceMap[i][j];
@@ -105,16 +105,24 @@ public void drawLevel(){
         }
       }
     }
-  }
-  boolean altColor = true;
-  for (int i = 0; i < map.getPlayers().size(); i++) {
+  }boolean altColor = true;
+  for (int i = 0; i < map.getPlayers().size(); i++) { //drawing snakebird
     for (Segment part : map.getPlayer(i).body){
     noStroke();
     if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head. dont want to design yet
       fill(#18d11e);
       square(part.getX()*ratio, part.getY()*ratio, ratio);
       fill(#ffd603);
-      circle(part.getX()*ratio + ratio/2, part.getY()*ratio + ratio/2, 2*ratio/3);
+      switch(direction){
+        case 1:
+          break;
+        case 2:
+          break;
+        case 3:
+          break;
+        case 4:
+          break;
+      }
     }else{
       if (altColor){
         fill(#47db47);
@@ -143,6 +151,7 @@ public void makeSpike(int x, int y){
 }
 // 1 = north, 2 = east, 3 = south, 4 = west
 public void moveAttempt(int direction) {
+  this.direction = direction;
   Space next;
   LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
   boolean go = true;
