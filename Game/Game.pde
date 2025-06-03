@@ -69,8 +69,16 @@ void keyPressed(){
       if (key == 'e') {
         for (int i = 0; i < map.getSpaces().length; i++) {
           for (int ind = 0; ind < map.getSpaces[i].length; ind++) {
-            if (
+            if (map.getSpaces[i][ind] instanceof Segment) {
+              map.getSpaces[i][ind] = null;
+            }
           }
+        }
+        LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
+        for (int i = 0; i < body.size(); i++) {
+          int x = body.get(i).getX();
+          int y = body.get(i).getX();
+          map.getSpaces()[x][y] = body.get(i);
         }
         currentPlayer = (currentPlayer + 1) % map.getPlayers().size();
       }
