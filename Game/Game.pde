@@ -73,6 +73,11 @@ void keyPressed(){
       //  win(); // debug
       //}
       if (key == 'e') {
+        for (int i = 0; i < map.getSpaces().length; i++) {
+          for (int ind = 0; ind < map.getSpaces[i].length; ind++) {
+            if (
+          }
+        }
         currentPlayer = (currentPlayer + 1) % map.getPlayers().size();
       }
     }
@@ -229,6 +234,18 @@ public void moveAttempt(int direction) {
   }
   if (map.getPlayer(currentPlayer).gravity(checkBody(), map)) {
     death();
+  }
+}
+
+public boolean pushable(Snakebird other, int direction) {
+  if (direction == 1) {
+    for (int i = 0; i < 
+  }
+  else if (direction == 2) {
+  }
+  else if (direction == 3) {
+  }
+  else {
   }
 }
 

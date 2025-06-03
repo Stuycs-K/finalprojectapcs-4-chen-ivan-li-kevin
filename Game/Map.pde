@@ -133,9 +133,13 @@ public class Map{
       player.add(new Snakebird(playerParts));
       playerParts = new LinkedList<Segment>();
       for (int i = 15; i < 18; i++){
-        playerParts.add(new Segment(i, 11));
+        Segment s = new Segment(i, 11);
+        playerParts.add(s);
+        spaces[i][11] = s;
       }
-      playerParts.add(new Segment(17, 12));
+      Segment s = new Segment(17, 12);
+      playerParts.add(s);
+      spaces[17][12] = s;
       player.add(new Snakebird(playerParts));
     }*/
   }
