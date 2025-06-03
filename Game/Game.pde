@@ -30,25 +30,19 @@ void makeGrid(){
 }
 void keyPressed(){
   map.checkFruit();
+  if (Character.isDigit(key)){
+    currentLevel = key-48;
+    dead = !(map.loadLevel(currentLevel));
+  }
   if (win && key == ' '){
     currentLevel++;
     currentPlayer = 0;
-    dead = false;
     win = false;
-    if (currentLevel >= 5){
-      background(255);
-      dead = true;
-      textSize(60);
-      fill(0);
-      text("no more levels for now", width/2-400, 200);
-    }else{
-      map.loadLevel(currentLevel);
-    }
+    dead = !(map.loadLevel(currentLevel));
   }
   if (key == 'r' && !(currentLevel >= 5)){
-    dead = false;
+    dead = !(map.loadLevel(currentLevel));
     win = false;
-    map.loadLevel(currentLevel);
   }if (!dead && !win){
     if (key == CODED){
       if (keyCode == UP){
