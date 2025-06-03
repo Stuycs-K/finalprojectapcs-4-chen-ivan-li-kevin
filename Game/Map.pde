@@ -115,7 +115,7 @@ public class Map{
       playerParts.add(new Segment(8, 6));
       player.add(new Snakebird(playerParts));
     }
-    if (level == 5){ 
+    /*if (level == 5){ 
       spaces = new Space[20][20];
       for (int i = 14; i < 18; i++) {
         spaces[i][13] = new Block(i , 13);
@@ -137,7 +137,7 @@ public class Map{
       }
       playerParts.add(new Segment(17, 12));
       player.add(new Snakebird(playerParts));
-    }
+    }*/
   }
   private void addFruit(int x, int y){ // convenience
     fruits.add(new Fruit(x, y));
