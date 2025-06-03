@@ -10,7 +10,7 @@ public class Map{
     player = new ArrayList<Snakebird>();
     fruits = new ArrayList<Fruit>();
   }
-  public void loadLevel(int level){
+  public boolean loadLevel(int level){
     fruits = new ArrayList<Fruit>();
     player = new ArrayList<Snakebird>();
     goalOpen = false;
@@ -33,7 +33,7 @@ public class Map{
         playerParts.add(new Segment(i, 9));
       }
     }
-    if (level == 2){
+    else if (level == 2){
       spaces = new Space[20][15];
       for (int i = 5; i < 15; i++){
         spaces[i][13] = new Block(i, 13);
@@ -67,7 +67,7 @@ public class Map{
       playerParts.add(new Segment(14, 10));
       playerParts.add(new Segment(14, 9));
     }
-    if (level == 3){
+    else if (level == 3){
       spaces = new Space[20][15];
       spaces[7][13] = new Block(7, 13);
       spaces[12][13] = new Block(12, 13);
@@ -88,7 +88,7 @@ public class Map{
       playerParts.add(new Segment(6, 7));
       playerParts.add(new Segment(6, 8));
     }
-    if (level == 4){ 
+    else if (level == 4){ 
       spaces = new Space[20][15];
       for (int i = 10; i < 12; i++){ 
         spaces[i][13] = new Block(i, 13);
@@ -111,7 +111,15 @@ public class Map{
       }
       playerParts.add(new Segment(8, 6));
     }
+    else{
+      background(255);
+      textSize(60);
+      fill(0);
+      text("no more levels for now", width/2-400, 200);
+      return false;
+    }
     player.add(new Snakebird(playerParts));
+    return true;
   }
   private void addFruit(int x, int y){ // convenience
     fruits.add(new Fruit(x, y));

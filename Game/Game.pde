@@ -30,25 +30,19 @@ void makeGrid(){
 }
 void keyPressed(){
   map.checkFruit();
+  if (Character.isDigit(key)){
+    currentLevel = key-48;
+    dead = !(map.loadLevel(currentLevel));
+  }
   if (win && key == ' '){
     currentLevel++;
     currentPlayer = 0;
-    dead = false;
     win = false;
-    if (currentLevel >= 5){
-      background(255);
-      dead = true;
-      textSize(60);
-      fill(0);
-      text("no more levels for now", width/2-400, 200);
-    }else{
-      map.loadLevel(currentLevel);
-    }
+    dead = !(map.loadLevel(currentLevel));
   }
   if (key == 'r' && !(currentLevel >= 5)){
-    dead = false;
+    dead = !(map.loadLevel(currentLevel));
     win = false;
-    map.loadLevel(currentLevel);
   }if (!dead && !win){
     if (key == CODED){
       if (keyCode == UP){
@@ -113,7 +107,8 @@ public void drawLevel(){
     }
   }
   boolean altColor = true;
-  for (Segment part : map.getPlayer(currentPlayer).body){
+  for (int i = 0; i < map.getPlayers().size(); i++) {
+    for (Segment part : map.getPlayer(i).body){
     noStroke();
     if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head. dont want to design yet
       fill(#18d11e);
@@ -129,6 +124,7 @@ public void drawLevel(){
       altColor = !altColor;
       square(part.getX()*ratio, part.getY()*ratio, ratio);
     }
+  }
   }
 }
 public void makeSpike(int x, int y){
@@ -152,6 +148,7 @@ public void moveAttempt(int direction) {
   boolean go = true;
   int nextX;
   int nextY;
+  // finds block thats being moved to
   if (direction == 1) {
     nextX = map.getPlayer(currentPlayer).getFront().getX();
     nextY = map.getPlayer(currentPlayer).getFront().getY() - 1;
@@ -169,11 +166,42 @@ public void moveAttempt(int direction) {
     nextY = map.getPlayer(currentPlayer).getFront().getY();
   }
   next = map.getSpaces()[nextX][nextY];
+  //checks if moving into self
   for (int i = 0; i < body.size(); i++) {
     if (nextX == body.get(i).getX() && nextY == body.get(i).getY()) {
       go = false;
     }
   }
+  //checks if pushing other player (WILL ONLY WORK WITH 2 SNAKEBIRDS)  (NOT READY, MAYBE LATER)
+  /*int pushing = -1;
+  for (int ind = 0; ind < map.getPlayers().size(); ind++) {
+    if (ind != currentPlayer) {
+      LinkedList<Segment> sb = map.getPlayer(ind).getBody();
+      for (int i = 0; i < sb.size(); i++) {
+        if (nextX == sb.get(i).getX() && nextY == sb.get(i).getY()) {
+          pushing = ind;
+        }
+      }
+    }
+    if (pushing != -1) {
+      LinkedList<Segment> sb = map.getPlayer(pushing).getBody();
+      for (int i = 0; i < sb.size(); i++) {
+        Space test = map.getSpaces()[sb.get(i).getX()][sb.get(i).getY() - 1];
+        if (test instanceof Spike) {
+          death();
+        }
+        else if (test instanceof Block) {
+          go = false;
+        }
+      }
+      if (go) {
+        for (int i = 0; i < sb.size(); i++) {
+          sb.get(i).changeY(-1);
+        }
+      }
+    }
+  }*/
+  //checks the other possible block types
   if (go) {
     if(map.opened() && map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
       win();
