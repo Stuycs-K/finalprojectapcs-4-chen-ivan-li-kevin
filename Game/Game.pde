@@ -35,7 +35,7 @@ void keyPressed(){
     currentPlayer = 0;
     dead = false;
     win = false;
-    if (currentLevel >= 5){
+    if (currentLevel >= 6){
       background(255);
       dead = true;
       textSize(60);
@@ -45,7 +45,7 @@ void keyPressed(){
       map.loadLevel(currentLevel);
     }
   }
-  if (key == 'r' && !(currentLevel >= 5)){
+  if (key == 'r' && !(currentLevel >= 6)){
     dead = false;
     win = false;
     map.loadLevel(currentLevel);
@@ -113,7 +113,8 @@ public void drawLevel(){
     }
   }
   boolean altColor = true;
-  for (Segment part : map.getPlayer(currentPlayer).body){
+  for (int i = 0; i < map.getPlayers().size(); i++) {
+    for (Segment part : map.getPlayer(i).body){
     noStroke();
     if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head. dont want to design yet
       fill(#18d11e);
@@ -129,6 +130,7 @@ public void drawLevel(){
       altColor = !altColor;
       square(part.getX()*ratio, part.getY()*ratio, ratio);
     }
+  }
   }
 }
 public void makeSpike(int x, int y){
@@ -152,6 +154,7 @@ public void moveAttempt(int direction) {
   boolean go = true;
   int nextX;
   int nextY;
+  // finds block thats being moved to
   if (direction == 1) {
     nextX = map.getPlayer(currentPlayer).getFront().getX();
     nextY = map.getPlayer(currentPlayer).getFront().getY() - 1;
@@ -169,11 +172,15 @@ public void moveAttempt(int direction) {
     nextY = map.getPlayer(currentPlayer).getFront().getY();
   }
   next = map.getSpaces()[nextX][nextY];
+  //checks if moving into self
   for (int i = 0; i < body.size(); i++) {
     if (nextX == body.get(i).getX() && nextY == body.get(i).getY()) {
       go = false;
     }
   }
+  //checks if pushing other player
+  
+  //checks the other possible block types
   if (go) {
     if(map.opened() && map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
       win();

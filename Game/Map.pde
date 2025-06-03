@@ -92,7 +92,7 @@ public class Map{
       player.add(new Snakebird(playerParts));
     }
     if (level == 4){ 
-      spaces = new Space[20][15];
+      spaces = new Space[20][20];
       for (int i = 10; i < 12; i++){ 
         spaces[i][13] = new Block(i, 13);
       }
@@ -116,7 +116,7 @@ public class Map{
       player.add(new Snakebird(playerParts));
     }
     if (level == 5){ 
-      spaces = new Space[20][15];
+      spaces = new Space[20][20];
       for (int i = 14; i < 18; i++) {
         spaces[i][13] = new Block(i , 13);
       }
@@ -132,10 +132,11 @@ public class Map{
       }
       player.add(new Snakebird(playerParts));
       playerParts = new LinkedList<Segment>();
-      // not done
-      for (int i = 14; i < 17; i++){
-        playerParts.add(new Segment(i, 12));
+      for (int i = 15; i < 18; i++){
+        playerParts.add(new Segment(i, 11));
       }
+      playerParts.add(new Segment(17, 12));
+      player.add(new Snakebird(playerParts));
     }
   }
   private void addFruit(int x, int y){ // convenience
