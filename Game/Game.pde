@@ -35,7 +35,7 @@ void keyPressed(){
     currentPlayer = 0;
     dead = false;
     win = false;
-    if (currentLevel >= 6){
+    if (currentLevel >= 5){
       background(255);
       dead = true;
       textSize(60);
@@ -45,7 +45,7 @@ void keyPressed(){
       map.loadLevel(currentLevel);
     }
   }
-  if (key == 'r' && !(currentLevel >= 6)){
+  if (key == 'r' && !(currentLevel >= 5)){
     dead = false;
     win = false;
     map.loadLevel(currentLevel);
@@ -178,8 +178,35 @@ public void moveAttempt(int direction) {
       go = false;
     }
   }
-  //checks if pushing other player
-  
+  //checks if pushing other player (WILL ONLY WORK WITH 2 SNAKEBIRDS)  (NOT READY, MAYBE LATER)
+  /*int pushing = -1;
+  for (int ind = 0; ind < map.getPlayers().size(); ind++) {
+    if (ind != currentPlayer) {
+      LinkedList<Segment> sb = map.getPlayer(ind).getBody();
+      for (int i = 0; i < sb.size(); i++) {
+        if (nextX == sb.get(i).getX() && nextY == sb.get(i).getY()) {
+          pushing = ind;
+        }
+      }
+    }
+    if (pushing != -1) {
+      LinkedList<Segment> sb = map.getPlayer(pushing).getBody();
+      for (int i = 0; i < sb.size(); i++) {
+        Space test = map.getSpaces()[sb.get(i).getX()][sb.get(i).getY() - 1];
+        if (test instanceof Spike) {
+          death();
+        }
+        else if (test instanceof Block) {
+          go = false;
+        }
+      }
+      if (go) {
+        for (int i = 0; i < sb.size(); i++) {
+          sb.get(i).changeY(-1);
+        }
+      }
+    }
+  }*/
   //checks the other possible block types
   if (go) {
     if(map.opened() && map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
