@@ -1,6 +1,6 @@
 boolean debugGrid = false;
 int[][] grid;
-int ratio, currentLevel, currentPlayer, direction;
+int ratio, currentLevel, currentPlayer;
 boolean dead, win;
 int debug;
 Map map;
@@ -69,9 +69,9 @@ void keyPressed(){
       if (key == 'e') {
         //swaps player, removes the segments of the other snakebird from the map, and adds the segments of the snakebird that was just being controlled and is now inactive
         for (int i = 0; i < map.getSpaces().length; i++) {
-          for (int ind = 0; ind < map.getSpaces[i].length; ind++) {
-            if (map.getSpaces[i][ind] instanceof Segment) {
-              map.getSpaces[i][ind] = null;
+          for (int ind = 0; ind < map.getSpaces()[i].length; ind++) {
+            if (map.getSpaces()[i][ind] instanceof Segment) {
+              map.getSpaces()[i][ind] = null;
             }
           }
         }
@@ -125,10 +125,11 @@ public void drawLevel(){
     for (Segment part : map.getPlayer(i).body){
     noStroke();
     if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head
+      int playDirect = map.getPlayer(currentPlayer).direction;
       fill(#18d11e);
       square(part.getX()*ratio, part.getY()*ratio, ratio);
       fill(#ffd603);
-      switch(direction){
+      switch(playDirect){
         case 1:
           triangle(part.getX()*ratio+ratio/4, part.getY()*ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio, part.getX()*ratio+ratio/2, part.getY()*ratio-ratio/2);
           break;
@@ -232,13 +233,13 @@ public void moveAttempt(int direction) {
       nextFruit.collect();
       map.checkFruit();
       map.getPlayer(currentPlayer).expand(new Segment(next.getX(), next.getY()));      
-      this.direction = direction;
+      map.getPlayer(currentPlayer).direction = direction;
     }
     else if (next instanceof Block) {
     }
     else {
       map.getPlayer(currentPlayer).move(direction);
-      this.direction = direction;
+      map.getPlayer(currentPlayer).direction = direction;
     }
   }
   if (map.getPlayer(currentPlayer).gravity(checkBody(), map)) {

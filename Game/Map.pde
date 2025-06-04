@@ -17,7 +17,6 @@ public class Map{
     LinkedList<Segment> playerParts = new LinkedList<Segment>();
     fruits = new ArrayList<Fruit>();
     if (level == 1){
-      direction = 2;
       spaces = new Space[20][15];
       for (int i = 7; i < 11; i++){
         spaces[i][10] = new Block(i, 10);
@@ -34,9 +33,9 @@ public class Map{
         playerParts.add(new Segment(i, 9));
       }
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 2;
     }
     else if (level == 2){
-      direction = 4;
       spaces = new Space[20][15];
       for (int i = 5; i < 15; i++){
         spaces[i][13] = new Block(i, 13);
@@ -70,9 +69,9 @@ public class Map{
       playerParts.add(new Segment(14, 10));
       playerParts.add(new Segment(14, 9));
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 4;
     }
     else if (level == 3){
-      direction = 2;
       spaces = new Space[20][15];
       spaces[7][13] = new Block(7, 13);
       spaces[12][13] = new Block(12, 13);
@@ -93,9 +92,9 @@ public class Map{
       playerParts.add(new Segment(6, 7));
       playerParts.add(new Segment(6, 8));
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 2;
     }
     else if (level == 4){ 
-      direction = 2;
       spaces = new Space[20][20];
       for (int i = 10; i < 12; i++){ 
         spaces[i][13] = new Block(i, 13);
@@ -118,6 +117,7 @@ public class Map{
       }
       playerParts.add(new Segment(8, 6));
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 2;
     }/*else if (level == 5){ 
       spaces = new Space[20][20];
       for (int i = 14; i < 18; i++) {
