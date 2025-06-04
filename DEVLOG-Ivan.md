@@ -65,3 +65,15 @@ Overhauled the win code, and added a new int that tracks the level (25 minutes)
 Indicator added for the head of the snakebird(5 minutes)
 
 Special endscreen for once every level is done (5 minutes)
+
+### 2025-06-02 - Graphic polishing
+Arrow keys can now move the character 
+
+Goal now is displayed as a hollow circle when not open
+
+Spike is now completely done (30 minutes)
+
+### 2025-06-03 - Level select
+Using the number keys 1-4 can select a level (30 minutes)
+
+Started improving the head sprite (10 minutes)
