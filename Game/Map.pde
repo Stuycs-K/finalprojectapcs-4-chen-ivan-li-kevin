@@ -33,6 +33,7 @@ public class Map{
         playerParts.add(new Segment(i, 9));
       }
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 2;
     }
     else if (level == 2){
       spaces = new Space[20][15];
@@ -68,6 +69,7 @@ public class Map{
       playerParts.add(new Segment(14, 10));
       playerParts.add(new Segment(14, 9));
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 4;
     }
     else if (level == 3){
       spaces = new Space[20][15];
@@ -90,6 +92,7 @@ public class Map{
       playerParts.add(new Segment(6, 7));
       playerParts.add(new Segment(6, 8));
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 2;
     }
     else if (level == 4){ 
       spaces = new Space[20][20];
@@ -114,7 +117,8 @@ public class Map{
       }
       playerParts.add(new Segment(8, 6));
       player.add(new Snakebird(playerParts));
-    }else if (level == 5){ 
+    }
+    else if (level == 5){ 
       spaces = new Space[20][20];
       for (int i = 14; i < 18; i++) {
         spaces[i][13] = new Block(i , 13);
@@ -140,6 +144,8 @@ public class Map{
       playerParts.add(s);
       spaces[17][12] = s;
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 4;
+      player.get(1).direction = 4;
     }
     else{
       background(255);
