@@ -69,9 +69,9 @@ void keyPressed(){
       if (key == 'e') {
         //swaps player, removes the segments of the other snakebird from the map, and adds the segments of the snakebird that was just being controlled and is now inactive
         for (int i = 0; i < map.getSpaces().length; i++) {
-          for (int ind = 0; ind < map.getSpaces[i].length; ind++) {
-            if (map.getSpaces[i][ind] instanceof Segment) {
-              map.getSpaces[i][ind] = null;
+          for (int ind = 0; ind < map.getSpaces()[i].length; ind++) {
+            if (map.getSpaces()[i][ind] instanceof Segment) {
+              map.getSpaces()[i][ind] = null;
             }
           }
         }
@@ -101,7 +101,7 @@ public void drawLevel(){
   }else{
     fill(#FFFFFF);
   }circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
-  for (int i = 0; i < spaceMap.length; i++){
+  for (int i = 0; i < spaceMap.length; i++){ //drawing map
     for (int j = 0; j < spaceMap[i].length; j++){
       if (spaceMap[i][j] != null){
         Space currentBlock = spaceMap[i][j];
@@ -111,6 +111,7 @@ public void drawLevel(){
         }else if (currentBlock instanceof Spike){
           makeSpike(i,j);
         }else{
+          stroke(200);
           if (!debugGrid){
             noStroke();
           }
@@ -119,16 +120,29 @@ public void drawLevel(){
         }
       }
     }
-  }
-  boolean altColor = true;
-  for (int i = 0; i < map.getPlayers().size(); i++) {
+  }boolean altColor = true;
+  for (int i = 0; i < map.getPlayers().size(); i++) { //drawing snakebird
     for (Segment part : map.getPlayer(i).body){
     noStroke();
-    if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head. dont want to design yet
+    if (part == map.getPlayer(currentPlayer).body.peek()){// extra code for head
+      int playDirect = map.getPlayer(currentPlayer).direction;
       fill(#18d11e);
       square(part.getX()*ratio, part.getY()*ratio, ratio);
       fill(#ffd603);
-      circle(part.getX()*ratio + ratio/2, part.getY()*ratio + ratio/2, 2*ratio/3);
+      switch(playDirect){
+        case 1:
+          triangle(part.getX()*ratio+ratio/4, part.getY()*ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio, part.getX()*ratio+ratio/2, part.getY()*ratio-ratio/2);
+          break;
+        case 2:
+          triangle(part.getX()*ratio+ratio, part.getY()*ratio+ratio/4, part.getX()*ratio+ratio, part.getY()*ratio+3*ratio/4, part.getX()*ratio+3*ratio/2, part.getY()*ratio+ratio/2);
+          break;
+        case 3:
+          triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio, part.getX()*ratio+ratio/2, part.getY()*ratio+3*ratio/2);
+          break;
+        case 4:
+          triangle(part.getX()*ratio, part.getY()*ratio+ratio/4, part.getX()*ratio, part.getY()*ratio+3*ratio/4, part.getX()*ratio-ratio/2, part.getY()*ratio+ratio/2);          
+          break;
+      }
     }else{
       if (altColor){
         fill(#47db47);
@@ -218,12 +232,14 @@ public void moveAttempt(int direction) {
       Fruit nextFruit = (Fruit) map.getSpaces()[next.getX()][next.getY()];
       nextFruit.collect();
       map.checkFruit();
-      map.getPlayer(currentPlayer).expand(new Segment(next.getX(), next.getY()));
+      map.getPlayer(currentPlayer).expand(new Segment(next.getX(), next.getY()));      
+      map.getPlayer(currentPlayer).direction = direction;
     }
     else if (next instanceof Block) {
     }
     else {
       map.getPlayer(currentPlayer).move(direction);
+      map.getPlayer(currentPlayer).direction = direction;
     }
   }
   if (map.getPlayer(currentPlayer).gravity(checkBody(), map)) {
