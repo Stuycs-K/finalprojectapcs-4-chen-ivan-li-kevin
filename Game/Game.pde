@@ -1,4 +1,4 @@
-boolean debugGrid = true;
+boolean debugGrid = false;
 int[][] grid;
 int ratio, currentLevel, currentPlayer, direction;
 boolean dead, win;
@@ -119,11 +119,13 @@ public void drawLevel(){
           triangle(part.getX()*ratio+ratio/4, part.getY()*ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio, part.getX()*ratio+ratio/2, part.getY()*ratio-ratio/2);
           break;
         case 2:
+          triangle(part.getX()*ratio+ratio, part.getY()*ratio+ratio/4, part.getX()*ratio+ratio, part.getY()*ratio+3*ratio/4, part.getX()*ratio+3*ratio/2, part.getY()*ratio+ratio/2);
           break;
         case 3:
           triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio, part.getX()*ratio+ratio/2, part.getY()*ratio+3*ratio/2);
           break;
         case 4:
+          triangle(part.getX()*ratio, part.getY()*ratio+ratio/4, part.getX()*ratio, part.getY()*ratio+3*ratio/4, part.getX()*ratio-ratio/2, part.getY()*ratio+ratio/2);          
           break;
       }
     }else{
@@ -224,7 +226,8 @@ public void moveAttempt(int direction) {
       Fruit nextFruit = (Fruit) map.getSpaces()[next.getX()][next.getY()];
       nextFruit.collect();
       map.checkFruit();
-      map.getPlayer(currentPlayer).expand(new Segment(next.getX(), next.getY()));
+      map.getPlayer(currentPlayer).expand(new Segment(next.getX(), next.getY()));      
+      this.direction = direction;
     }
     else if (next instanceof Block) {
     }
