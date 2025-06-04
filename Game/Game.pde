@@ -56,7 +56,7 @@ void keyPressed(){
         moveAttempt(4);
       }
     }else{
-      if (key == 'w') {
+      if (key == 'w') { 
         moveAttempt(1);
       }if (key == 'd') {
         moveAttempt(2);
@@ -191,8 +191,8 @@ public void moveAttempt(int direction) {
   int pushing = -1;
   for (int ind = 0; ind < map.getPlayers().size(); ind++) {
     if (ind != currentPlayer) {
-      System.out.println(ind);
-      System.out.println(currentPlayer);
+      //System.out.println(ind);
+      //System.out.println(currentPlayer);
       LinkedList<Segment> sb = map.getPlayer(ind).getBody();
       for (int i = 0; i < sb.size(); i++) {
         if (nextX == sb.get(i).getX() && nextY == sb.get(i).getY()) {
@@ -202,7 +202,7 @@ public void moveAttempt(int direction) {
     }
     if (pushing != -1) {
       System.out.println("NO");
-      Snakebird other =map.getPlayer(pushing);
+      Snakebird other = map.getPlayer(pushing);
       if (pushable(other, direction)) {
         if (direction == 1) {
           for (int i = 0; i < other.getBody().size(); i++) {
@@ -260,6 +260,18 @@ public void moveAttempt(int direction) {
     if (map.getPlayer(i).gravity(checkBody(map.getPlayer(i)), map)) {
       death();
     }
+  }
+  for (int i = 0; i < map.getSpaces().length; i++) {
+    for (int ind = 0; ind < map.getSpaces()[i].length; ind++) {
+      if (map.getSpaces()[i][ind] instanceof Segment) {
+        map.getSpaces()[i][ind] = null;
+      }
+    }
+  }
+  for (int i = 0; i < body.size(); i++) {
+    int x = body.get(i).getX();
+    int y = body.get(i).getY();
+    map.getSpaces()[x][y] = body.get(i);
   }
 }
 
@@ -329,6 +341,7 @@ public int checkBody(Snakebird s) {
     int count = 0;
     while (checkingAir && current.getY() + count + 1 < map.getSpaces()[0].length) {
       Space next = map.getSpaces()[current.getX()][current.getY() + count + 1];
+      //System.out.println(count);
       if (next instanceof Block) {
         boolean ofBody = false;
         //System.out.println("NEXT:" + next);
@@ -341,6 +354,9 @@ public int checkBody(Snakebird s) {
         if (!ofBody) {
           checkingAir = false;
         }
+        else {
+          count++;
+        }
       }
       else {
         count++;
@@ -350,7 +366,7 @@ public int checkBody(Snakebird s) {
       result = count;
     }
   }
-  //System.out.println(result);
+  System.out.println(result);
   return result;
 }
 
