@@ -69,19 +69,21 @@ void keyPressed(){
       //}
       if (key == 'e' && map.getPlayers().size() != 1) {
         //swaps player, removes the segments of the other snakebird from the map, and adds the segments of the snakebird that was just being controlled and is now inactive
-        for (int i = 0; i < map.getSpaces().length; i++) {
-          for (int ind = 0; ind < map.getSpaces()[i].length; ind++) {
-            if (map.getSpaces()[i][ind] instanceof Segment) {
-              map.getSpaces()[i][ind] = null;
+          for (int i = 0; i < map.getSpaces().length; i++) {
+            for (int ind = 0; ind < map.getSpaces()[i].length; ind++) {
+              if (map.getSpaces()[i][ind] instanceof Segment) {
+                map.getSpaces()[i][ind] = null;
+              }
             }
           }
-        }
-        LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
-        for (int i = 0; i < body.size(); i++) {
-          int x = body.get(i).getX();
-          int y = body.get(i).getY();
-          map.getSpaces()[x][y] = body.get(i);
-        }
+          for (int i = 0; i < map.getPlayers().size(); i++) {
+            Snakebird sb = map.getPlayer(i);
+            for (int ind = 0; ind < sb.getBody().size(); ind++) {
+              int x = sb.getBody().get(ind).getX();
+              int y = sb.getBody().get(ind).getY();
+              map.getSpaces()[x][y] = sb.getBody().get(ind);
+            }
+          }
         currentPlayer = (currentPlayer + 1) % map.getPlayers().size();
       }
     }
@@ -202,7 +204,7 @@ public void moveAttempt(int direction) {
     }
   }
   //checks if pushing other player (WILL ONLY WORK WITH 2 SNAKEBIRDS)  (NOT READY, MAYBE LATER)
-  int pushing = -1;
+  /*int pushing = -1;
   for (int ind = 0; ind < map.getPlayers().size(); ind++) {
     if (ind != currentPlayer) {
       //System.out.println(ind);
@@ -215,7 +217,7 @@ public void moveAttempt(int direction) {
       }
     }
     if (pushing != -1) {
-      System.out.println("NO");
+      //System.out.println("NO");
       Snakebird other = map.getPlayer(pushing);
       if (pushable(other, direction)) {
         if (direction == 1) {
@@ -249,7 +251,7 @@ public void moveAttempt(int direction) {
         map.getPlayer(currentPlayer).move(direction);
       }
     }
-  }
+  }*/
   //checks the other possible block types
   if (go) {
     if(map.opened() && map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
@@ -265,7 +267,7 @@ public void moveAttempt(int direction) {
       map.getPlayer(currentPlayer).expand(new Segment(next.getX(), next.getY()));      
       map.getPlayer(currentPlayer).direction = direction;
     }
-    else if (next instanceof Block) {
+    else if (next instanceof Block || next instanceof Segment) {
     }
     else {
       map.getPlayer(currentPlayer).move(direction);
@@ -278,28 +280,36 @@ public void moveAttempt(int direction) {
         }
       }
     }
-    for (int i = 0; i < body.size(); i++) {
-      int x = body.get(i).getX();
-      int y = body.get(i).getY();
-      map.getSpaces()[x][y] = body.get(i);
+    for (int i = 0; i < map.getPlayers().size(); i++) {
+      Snakebird sb = map.getPlayer(i);
+      for (int ind = 0; ind < sb.getBody().size(); ind++) {
+        int x = sb.getBody().get(ind).getX();
+        int y = sb.getBody().get(ind).getY();
+        map.getSpaces()[x][y] = sb.getBody().get(ind);
+      }
     }
   }
   for (int i = 0; i < map.getPlayers().size(); i++) {
     if (map.getPlayer(i).gravity(checkBody(map.getPlayer(i)), map)) {
       death();
     }
-  }
-  for (int i = 0; i < map.getSpaces().length; i++) {
-    for (int ind = 0; ind < map.getSpaces()[i].length; ind++) {
-      if (map.getSpaces()[i][ind] instanceof Segment) {
-        map.getSpaces()[i][ind] = null;
+    System.out.println("NEW");
+    for (int x = 0; x < map.getSpaces().length; x++) {
+      for (int y = 0; y < map.getSpaces()[x].length; y++) {
+        if (map.getSpaces()[x][y] instanceof Segment) {
+          System.out.println(map.getSpaces()[x][y]);
+          map.getSpaces()[x][y] = null;
+        }
       }
     }
-  }
-  for (int i = 0; i < body.size(); i++) {
-    int x = body.get(i).getX();
-    int y = body.get(i).getY();
-    map.getSpaces()[x][y] = body.get(i);
+    for (int index = 0; index < map.getPlayers().size(); index++) {
+      Snakebird sb = map.getPlayer(index);
+      for (int ind = 0; ind < sb.getBody().size(); ind++) {
+        int x = sb.getBody().get(ind).getX();
+        int y = sb.getBody().get(ind).getY();
+        map.getSpaces()[x][y] = sb.getBody().get(ind);
+      }
+    }
   }
 }
 
@@ -362,16 +372,16 @@ public boolean pushable(Snakebird other, int direction) {
 
 public int checkBody(Snakebird s) {
   int result = 10000;
+  //System.out.println("NEW");
   LinkedList<Segment> body = s.getBody();
   for (int i = 0; i < body.size(); i++) {
     Segment current = body.get(i);
     boolean checkingAir = true;
     int count = 0;
+    //System.out.println("I: " + i);
     while (checkingAir && current.getY() + count + 1 < map.getSpaces()[0].length) {
       Space next = map.getSpaces()[current.getX()][current.getY() + count + 1];
-      //System.out.println(count);
       if (next instanceof Block) {
-        System.out.println("PLEASE");
         boolean ofBody = false;
         //System.out.println("NEXT:" + next);
         for (int ind = 0; ind < body.size(); ind++) {
@@ -390,12 +400,13 @@ public int checkBody(Snakebird s) {
       else {
         count++;
       }
+      //System.out.println(count);
     }
     if (count < result) {
       result = count;
     }
   }
-  System.out.println(result);
+  //System.out.println(result);
   return result;
 }
 
