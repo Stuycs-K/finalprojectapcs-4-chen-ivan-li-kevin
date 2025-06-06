@@ -131,16 +131,16 @@ public void drawLevel(){
       fill(#ffd603);
       switch(playDirect){
         case 1:
-          triangle(part.getX()*ratio+ratio/4, part.getY()*ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio, part.getX()*ratio+ratio/2, part.getY()*ratio-ratio/2);
+          triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio/6, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio/6, part.getX()*ratio+ratio/2, part.getY()*ratio-ratio/2+ratio/6);
           break;
         case 2:
-          triangle(part.getX()*ratio+ratio, part.getY()*ratio+ratio/4, part.getX()*ratio+ratio, part.getY()*ratio+3*ratio/4, part.getX()*ratio+3*ratio/2, part.getY()*ratio+ratio/2);
+          triangle(part.getX()*ratio+ratio-ratio/6, part.getY()*ratio+ratio/4, part.getX()*ratio+ratio-ratio/6, part.getY()*ratio+3*ratio/4, part.getX()*ratio+3*ratio/2-ratio/6, part.getY()*ratio+ratio/2);
           break;
         case 3:
-          triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio, part.getX()*ratio+ratio/2, part.getY()*ratio+3*ratio/2);
+          triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio-ratio/6, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio-ratio/6, part.getX()*ratio+ratio/2, part.getY()*ratio+3*ratio/2-ratio/6);
           break;
         case 4:
-          triangle(part.getX()*ratio, part.getY()*ratio+ratio/4, part.getX()*ratio, part.getY()*ratio+3*ratio/4, part.getX()*ratio-ratio/2, part.getY()*ratio+ratio/2);          
+          triangle(part.getX()*ratio+ratio/6, part.getY()*ratio+ratio/4, part.getX()*ratio+ratio/6, part.getY()*ratio+3*ratio/4, part.getX()*ratio-ratio/2+ratio/6, part.getY()*ratio+ratio/2);          
           break;
       }
     }else{
