@@ -134,6 +134,11 @@ public void drawLevel(){
           triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio/6, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio/6, part.getX()*ratio+ratio/2, part.getY()*ratio-ratio/2+ratio/6);
           fill(255);
           stroke(0);
+          circle(part.getX()*ratio+ratio/2, part.getY()*ratio+ratio/3+ratio/10, ratio/4);
+          circle(part.getX()*ratio+7*ratio/9, part.getY()*ratio+2*ratio/9+ratio/10, ratio/4);
+          fill(0);
+          circle(part.getX()*ratio+ratio/2, part.getY()*ratio+ratio/3+ratio/10, ratio/8);
+          circle(part.getX()*ratio+7*ratio/9, part.getY()*ratio+2*ratio/9+ratio/10, ratio/8);
           break;
         case 2:
           triangle(part.getX()*ratio+ratio-ratio/3, part.getY()*ratio+ratio/4+ratio/6, part.getX()*ratio+ratio-ratio/3, part.getY()*ratio+3*ratio/4+ratio/6, part.getX()*ratio+3*ratio/2-ratio/3, part.getY()*ratio+ratio/2+ratio/6);
@@ -149,11 +154,21 @@ public void drawLevel(){
           triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio-ratio/6, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio-ratio/6, part.getX()*ratio+ratio/2, part.getY()*ratio+3*ratio/2-ratio/6);
           fill(255);
           stroke(0);
+          circle(part.getX()*ratio+ratio/2, part.getY()*ratio+2*ratio/9+ratio/3, ratio/4);
+          circle(part.getX()*ratio+2*ratio/9, part.getY()*ratio+ratio/3+ratio/3, ratio/4);
+          fill(0);
+          circle(part.getX()*ratio+ratio/2, part.getY()*ratio+2*ratio/9+ratio/3, ratio/8);
+          circle(part.getX()*ratio+2*ratio/9, part.getY()*ratio+ratio/3+ratio/3, ratio/8);
           break;
         case 4:
-          triangle(part.getX()*ratio+ratio/6, part.getY()*ratio+ratio/4, part.getX()*ratio+ratio/6, part.getY()*ratio+3*ratio/4, part.getX()*ratio-ratio/2+ratio/6, part.getY()*ratio+ratio/2);  
+          triangle(part.getX()*ratio+ratio/6, part.getY()*ratio+ratio/4+ratio/6, part.getX()*ratio+ratio/6, part.getY()*ratio+3*ratio/4+ratio/6, part.getX()*ratio-ratio/2+ratio/6, part.getY()*ratio+ratio/2+ratio/6);  
           fill(255);
           stroke(0);
+          circle(part.getX()*ratio+ratio/2, part.getY()*ratio+ratio/3, ratio/4);
+          circle(part.getX()*ratio+2*ratio/9, part.getY()*ratio+2*ratio/9, ratio/4);
+          fill(0);
+          circle(part.getX()*ratio+ratio/2, part.getY()*ratio+ratio/3, ratio/8);
+          circle(part.getX()*ratio+2*ratio/9, part.getY()*ratio+2*ratio/9, ratio/8);
           break;
       }
       noStroke();
