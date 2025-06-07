@@ -1,6 +1,6 @@
 boolean debugGrid = false;
 int[][] grid;
-int ratio, currentLevel, currentPlayer;
+int ratio, currentLevel, currentPlayer, numPlayer;
 boolean dead, win;
 int debug;
 Map map;
@@ -39,6 +39,7 @@ void keyPressed(){
     currentPlayer = 0;
     win = false;
     dead = !(map.loadLevel(currentLevel));
+    numPlayer = map.getPlayers().size();
   }
   if (key == 'r' && !(currentLevel >= 6)){
     dead = !(map.loadLevel(currentLevel));
@@ -98,6 +99,8 @@ public void drawLevel(){
           circle(i*ratio + ratio/2, (j*ratio) + ratio/2, 4*ratio/5);
         }else if (currentBlock instanceof Spike){
           makeSpike(i,j);
+        }
+        else if (currentBlock instanceof Segment){
         }else{
           stroke(200);
           if (!debugGrid){
@@ -243,7 +246,18 @@ public void moveAttempt(int direction) {
   //checks the other possible block types
   if (go) {
     if(map.opened() && map.getGoal()[0] == nextX && map.getGoal()[1] == nextY){
-      win();
+      LinkedList<Segment> b = map.getPlayer(currentPlayer).getBody();
+      while (b.size() > 0){
+        b.removeFirst();
+      }
+      map.getPlayers().remove(currentPlayer);
+      if (map.getPlayers().size() != 0){
+        currentPlayer = (currentPlayer + 1) % map.getPlayers().size();
+      }
+      numPlayer--;
+      if (numPlayer == 0) {
+        win();
+      }
     }
     else if (next instanceof Spike) {
       death();
