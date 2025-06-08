@@ -33,6 +33,7 @@ void keyPressed(){
   if (Character.isDigit(key)){
     currentLevel = key-48;
     dead = !(map.loadLevel(currentLevel));
+    currentPlayer = 0;
   }
   if (win && key == ' '){
     currentLevel++;
