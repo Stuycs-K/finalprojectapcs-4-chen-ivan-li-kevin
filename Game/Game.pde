@@ -114,19 +114,19 @@ public void drawLevel(){
   }boolean altColor = false;
   for (int i = 0; i < map.getPlayers().size(); i++) { //drawing snakebird
     for (Segment part : map.getPlayer(i).body){
-    noStroke();
-    if (altColor){
-      if (i == 0) fill(#47db47);
-        else fill(#0088fe);
-      }else{
-        if (i == 0) fill(#18d11e);
-        else fill(#004dff);
+      noStroke();
+      if (altColor){
+        if (i == 0) fill(#47db47);
+          else fill(#0088fe);
+        }else{
+          if (i == 0) fill(#18d11e);
+          else fill(#004dff);
+        }
+        altColor = !altColor;
+        square(part.getX()*ratio, part.getY()*ratio, ratio);
       }
-      altColor = !altColor;
-      square(part.getX()*ratio, part.getY()*ratio, ratio);
-    }
-  }for (int i = 0; i < map.getPlayers().size(); i++){// extra code for head
-    Segment part = map.getPlayer(i).body.peek();
+  }try{for (int i = 0; i < map.getPlayers().size(); i++){// extra code for head
+    Segment part = map.getPlayer(i).body.get(0);
     int playDirect = map.getPlayer(i).direction;
     fill(#ffd603);
     switch(playDirect){
@@ -177,6 +177,7 @@ public void drawLevel(){
     }
     noStroke();
   }
+  }catch(Exception e){};
 }
 public void makeSpike(int x, int y){
   fill(127);
