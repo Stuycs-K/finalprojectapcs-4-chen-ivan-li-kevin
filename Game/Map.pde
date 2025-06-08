@@ -121,7 +121,7 @@ public class Map{
     }
     else if (level == 5){
       goalOpen = true;
-      spaces = new Space[20][20];
+      spaces = new Space[20][15];
       for (int i = 10; i < 14; i++) {
         spaces[i][13] = new Block(i , 13);
       }
