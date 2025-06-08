@@ -116,7 +116,8 @@ public void drawLevel(){
     noStroke();
     if (part == map.getPlayer(i).body.peek()){// extra code for head
       int playDirect = map.getPlayer(i).direction;
-      fill(#18d11e);
+      if(i == 0) fill(#18d11e);
+      else fill(#004dff); // second bird
       square(part.getX()*ratio, part.getY()*ratio, ratio);
       fill(#ffd603);
       switch(playDirect){
@@ -164,9 +165,11 @@ public void drawLevel(){
       noStroke();
     }else{
       if (altColor){
-        fill(#47db47);
+        if (i == 0) fill(#47db47);
+        else fill(#0088fe);
       }else{
-        fill(#18d11e);
+        if (i == 0) fill(#18d11e);
+        else fill(#004dff);
       }
       altColor = !altColor;
       square(part.getX()*ratio, part.getY()*ratio, ratio);

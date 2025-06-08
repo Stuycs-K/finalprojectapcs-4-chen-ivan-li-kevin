@@ -117,6 +117,7 @@ public class Map{
       }
       playerParts.add(new Segment(8, 6));
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 2;
     }
     else if (level == 5){ 
       spaces = new Space[20][20];
@@ -222,12 +223,14 @@ public class Map{
         spaces[i][9] = s;
       }
       player.add(new Snakebird(playerParts));
+      player.get(0).direction = 2;
+      player.get(1).direction = 2;
     }
     else{
       background(255);
       textSize(60);
       fill(0);
-      text("no more levels for now", width/2-400, 200);
+      text("end", width/2-400, 200);
       return false;
     }
     return true;
