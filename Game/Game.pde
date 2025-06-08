@@ -10,7 +10,7 @@ void setup() {
   map = new Map();
   dead = false;
   win = false;
-  currentLevel = 5;
+  currentLevel = 1;
   currentPlayer = 0;
   map.loadLevel(currentLevel);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
@@ -40,7 +40,7 @@ void keyPressed(){
     win = false;
     dead = !(map.loadLevel(currentLevel));
   }
-  if (key == 'r' && !(currentLevel >= 6)){
+  if (key == 'r' && !(currentLevel >= 7)){
     dead = !(map.loadLevel(currentLevel));
     currentPlayer = 0;
     win = false;
