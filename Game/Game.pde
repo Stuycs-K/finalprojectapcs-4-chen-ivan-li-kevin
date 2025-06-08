@@ -191,7 +191,7 @@ public void moveAttempt(int direction) {
       go = false;
     }
   }
-  //checks if pushing other player (WILL ONLY WORK WITH 2 SNAKEBIRDS)  (NOT READY, MAYBE LATER)
+  //checks if pushing other player
   //System.out.println("NEW");
   for (int ind = 0; ind < map.getPlayers().size(); ind++) {
     int pushing = -1;
@@ -215,28 +215,28 @@ public void moveAttempt(int direction) {
           for (int i = 0; i < other.getBody().size(); i++) {
             map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY()] = null;
             other.getBody().get(i).changeY(-1);
-            map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY() - 1] = other.getBody().get(i);
+            map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY()] = other.getBody().get(i);
           }
         }
         else if (direction == 2) {
           for (int i = 0; i < map.getPlayer(pushing).getBody().size(); i++) {
             map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY()] = null;
             other.getBody().get(i).changeX(1);
-            map.getSpaces()[other.getBody().get(i).getX() + 1][other.getBody().get(i).getY()] = other.getBody().get(i);
+            map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY()] = other.getBody().get(i);
           }
         }
         else if (direction == 3) {
           for (int i = 0; i < map.getPlayer(pushing).getBody().size(); i++) {
             map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY()] = null;
             other.getBody().get(i).changeY(1);
-            map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY() + 1] = other.getBody().get(i);
+            map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY()] = other.getBody().get(i);
           }
         }
         else {
           for (int i = 0; i < map.getPlayer(pushing).getBody().size(); i++) {
             map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY()] = null;
             other.getBody().get(i).changeX(-1);
-            map.getSpaces()[other.getBody().get(i).getX() - 1][other.getBody().get(i).getY()] = other.getBody().get(i);
+            map.getSpaces()[other.getBody().get(i).getX()][other.getBody().get(i).getY()] = other.getBody().get(i);
           }
         }
         map.getPlayer(currentPlayer).move(direction);
