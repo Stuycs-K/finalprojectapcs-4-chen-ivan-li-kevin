@@ -10,7 +10,7 @@ void setup() {
   map = new Map();
   dead = false;
   win = false;
-  currentLevel = 1;
+  currentLevel = 5;
   currentPlayer = 0;
   map.loadLevel(currentLevel);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
@@ -130,10 +130,14 @@ public void drawLevel(){
     if(map.getPlayer(i).body.size() > 0){
       Segment part = map.getPlayer(i).body.get(0);
       int playDirect = map.getPlayer(i).direction;
+      int beakX = 0; 
+      int beakY = 0; //aligns sleep signs
       fill(#ffd603);
       switch(playDirect){
         case 1:
           triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio/6, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio/6, part.getX()*ratio+ratio/2, part.getY()*ratio-ratio/2+ratio/6);
+          beakX = part.getX()*ratio+2*ratio/3-20;
+          beakY = part.getY()*ratio-2*ratio/3;
           fill(255);
           stroke(0);
           if(i == currentPlayer){
@@ -145,6 +149,8 @@ public void drawLevel(){
           }break;
         case 2:
           triangle(part.getX()*ratio+ratio-ratio/3, part.getY()*ratio+ratio/4+ratio/6, part.getX()*ratio+ratio-ratio/3, part.getY()*ratio+3*ratio/4+ratio/6, part.getX()*ratio+3*ratio/2-ratio/3, part.getY()*ratio+ratio/2+ratio/6);
+          beakX = part.getX()*ratio+2*ratio/3;
+          beakY = part.getY()*ratio-ratio/6;
           fill(255);
           stroke(0);
           if (i == currentPlayer){
@@ -156,6 +162,8 @@ public void drawLevel(){
           }break;
         case 3:
           triangle(part.getX()*ratio+ratio/4, part.getY()*ratio+ratio-ratio/6, part.getX()*ratio+3*ratio/4, part.getY()*ratio+ratio-ratio/6, part.getX()*ratio+ratio/2, part.getY()*ratio+3*ratio/2-ratio/6);
+          beakX = part.getX()*ratio+2*ratio/3-20;
+          beakY = part.getY()*ratio+ratio/3;
           fill(255);
           stroke(0);
           if (i == currentPlayer){
@@ -167,6 +175,8 @@ public void drawLevel(){
           }break;
         case 4:
           triangle(part.getX()*ratio+ratio/6, part.getY()*ratio+ratio/4+ratio/6, part.getX()*ratio+ratio/6, part.getY()*ratio+3*ratio/4+ratio/6, part.getX()*ratio-ratio/2+ratio/6, part.getY()*ratio+ratio/2+ratio/6);  
+          beakX = part.getX()*ratio;
+          beakY = part.getY()*ratio;
           fill(255);
           stroke(0);
           if (i == currentPlayer){
@@ -176,6 +186,15 @@ public void drawLevel(){
             circle(part.getX()*ratio+ratio/2, part.getY()*ratio+ratio/3, ratio/8);
             circle(part.getX()*ratio+2*ratio/9, part.getY()*ratio+2*ratio/9, ratio/8);
           }break;
+      }
+      if (i != currentPlayer){
+        textSize(25);
+        fill(0);
+        text('Z', beakX+ratio/3, beakY+ratio/2);
+        textSize(30);
+        text('Z', beakX+2*ratio/3, beakY+ratio/6);
+        textSize(35);
+        text('Z', beakX+ratio, beakY-ratio/6);
       }
       noStroke();
     }
@@ -454,12 +473,13 @@ public void win(){
   win = true;
   background(255);
   drawLevel();
-  textSize(120);
+  textAlign(CENTER);
   fill(0);
-  text("You Win!", width/2-220, 200);
+  textSize(120);
+  text("You Win!", width/2, 200);
   textSize(30);
-  text("Press space to progress to the next level", width/2-250, 240);
-  text("Press R to restart the level.", width/2-170, 280);
+  text("Press space to progress to the next level", width/2, 240);
+  text("Press R to restart the level.", width/2, 280);
 }
 
 public void death(){
@@ -472,7 +492,8 @@ public void death(){
   drawLevel();
   textSize(120);
   fill(0);
-  text("Game Over!", width/2-300, 200);
+  textAlign(CENTER);
+  text("Game Over!", width/2, 200);
   textSize(30);
-  text("Press R to restart the level.", width/2-170, 280);
+  text("Press R to restart the level.", width/2, 280);
 }
