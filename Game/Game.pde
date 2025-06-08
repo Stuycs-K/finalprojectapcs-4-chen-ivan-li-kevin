@@ -1,6 +1,6 @@
 boolean debugGrid = false;
 int[][] grid;
-int ratio, currentLevel, currentPlayer, numPlayer;
+int ratio, currentLevel, currentPlayer;
 boolean dead, win;
 int debug;
 Map map;
@@ -39,7 +39,6 @@ void keyPressed(){
     currentPlayer = 0;
     win = false;
     dead = !(map.loadLevel(currentLevel));
-    numPlayer = map.getPlayers().size();
   }
   if (key == 'r' && !(currentLevel >= 6)){
     dead = !(map.loadLevel(currentLevel));
@@ -254,8 +253,7 @@ public void moveAttempt(int direction) {
       if (map.getPlayers().size() != 0){
         currentPlayer = (currentPlayer + 1) % map.getPlayers().size();
       }
-      numPlayer--;
-      if (numPlayer == 0) {
+      if (map.getPlayers().size() == 0) {
         win();
       }
     }
@@ -418,10 +416,6 @@ public int checkBody(Snakebird s) {
 
 public void win(){
   win = true;
-  LinkedList<Segment> body = map.getPlayer(currentPlayer).getBody();
-  while (body.size() > 0){
-    body.removeFirst();
-  }
   background(255);
   drawLevel();
   textSize(120);
