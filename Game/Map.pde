@@ -119,7 +119,8 @@ public class Map{
       player.add(new Snakebird(playerParts));
       player.get(0).direction = 2;
     }
-    else if (level == 5){ 
+    else if (level == 5){
+      goalOpen = true;
       spaces = new Space[20][20];
       for (int i = 10; i < 14; i++) {
         spaces[i][13] = new Block(i , 13);
@@ -149,6 +150,7 @@ public class Map{
       player.get(1).direction = 4;
     }
     else if (level == 6){ 
+      goalOpen = true;
       spaces = new Space[20][15];
       for (int i = 8; i < 15; i++) {
         spaces[14][i] = new Block(14, i);
