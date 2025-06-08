@@ -111,8 +111,9 @@ public void drawLevel(){
         }
       }
     }
-  }boolean altColor = false;
+  }
   for (int i = 0; i < map.getPlayers().size(); i++) { //drawing snakebird
+    boolean altColor = false;
     for (Segment part : map.getPlayer(i).body){
       noStroke();
       if (altColor){
