@@ -181,6 +181,48 @@ public class Map{
       player.get(0).direction = 2;
       player.get(1).direction = 2;
     }
+    else if (level == 7){ 
+      spaces = new Space[20][15];
+      for (int i = 11; i < 15; i++) {
+        spaces[6][i] = new Block(6, i);
+        spaces[7][i] = new Block(7, i);
+        spaces[15][i] = new Block(15, i);
+        spaces[16][i] = new Block(16, i);
+      }
+      for (int i = 13; i < 15; i++) {
+        spaces[8][i] = new Block(8, i);
+        spaces[12][i] = new Block(12, i);
+      }
+      spaces[9][13] = new Block(9, 13);
+      spaces[11][11] = new Block(11, 11);
+      spaces[13][11] = new Block(13, 11);
+      spaces[14][11] = new Block(14, 11);
+      spaces[13][9] = new Block(13, 9);
+      spaces[16][9] = new Block(16, 9);
+      spaces[16][10] = new Block(16, 10);
+      for (int i = 5; i < 9; i++) {
+        spaces[13][i] = new Block(13, i);
+        spaces[14][i] = new Block(14, i);
+        spaces[15][i] = new Block(15, i);
+        spaces[16][i] = new Block(16, i);
+      }
+      spaces[8][12] = new Spike(8, 12);
+      addFruit(12,10);
+      addFruit(14,9);
+      for (int i = 7; i > 5; i--){
+        Segment s = new Segment(i, 10);
+        playerParts.add(s);
+        spaces[i][10] = s;
+      }
+      player.add(new Snakebird(playerParts));
+      playerParts = new LinkedList<Segment>();
+      for (int i = 7; i > 5; i--){
+        Segment s = new Segment(i, 9);
+        playerParts.add(s);
+        spaces[i][9] = s;
+      }
+      player.add(new Snakebird(playerParts));
+    }
     else{
       background(255);
       textSize(60);

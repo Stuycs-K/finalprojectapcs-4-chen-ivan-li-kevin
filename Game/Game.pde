@@ -40,7 +40,7 @@ void keyPressed(){
     win = false;
     dead = !(map.loadLevel(currentLevel));
   }
-  if (key == 'r' && !(currentLevel >= 7)){
+  if (key == 'r' && !(currentLevel >= 8)){
     dead = !(map.loadLevel(currentLevel));
     currentPlayer = 0;
     win = false;
