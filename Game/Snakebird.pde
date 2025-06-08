@@ -1,6 +1,7 @@
 import java.util.LinkedList;
 public class Snakebird {
   private LinkedList<Segment> body;
+  int direction;
   
   public Snakebird(LinkedList<Segment> segments) {
     body = segments;

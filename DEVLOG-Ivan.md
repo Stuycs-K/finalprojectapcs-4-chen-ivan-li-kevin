@@ -29,7 +29,7 @@ A new method in Game has been added, drawLevel, that displays everything present
 ### 2025-05-25 - Bug fixes and overhauls
 Map has been overhauled to now use a 2D array of spaces (new class made by partner as a parent of block)
 
-loadLevel and drawLevel have also been changed in order to fit this new change. 
+loadLevel and drawLevel have also been changed in order to fit this new change.
 
 The player variable is now in the map class, and a snakebird has been added to the first level.
 
@@ -38,7 +38,7 @@ drawLevel now displays snakebirds as well.
 Also fixed a few bugs from syntax errors(30 minutes)
 
 ### 2025-05-27 - Fruit progress
-Fruits now have a field that determines if they have been collected. 
+Fruits now have a field that determines if they have been collected.
 
 Map has a method that checks every fruit, and removes any that are collected, then opens the goal if all are collected. (20 minutes)
 
@@ -65,3 +65,18 @@ Overhauled the win code, and added a new int that tracks the level (25 minutes)
 Indicator added for the head of the snakebird(5 minutes)
 
 Special endscreen for once every level is done (5 minutes)
+
+### 2025-06-02 - Graphic polishing
+Arrow keys can now move the character
+
+Goal now is displayed as a hollow circle when not open
+
+Spike is now completely done (30 minutes)
+
+### 2025-06-03 - Level select
+Using the number keys 1-4 can select a level (30 minutes)
+
+Started improving the head sprite (10 minutes)
+
+### 2025-06-04 - More polishing
+Head sprite and direction implemented, and default directions for every level (30 minutes)
