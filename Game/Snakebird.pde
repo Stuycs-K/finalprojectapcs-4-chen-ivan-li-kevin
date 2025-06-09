@@ -1,10 +1,13 @@
 import java.util.LinkedList;
 public class Snakebird {
   private LinkedList<Segment> body;
+  public color color1, color2;
   int direction;
   
-  public Snakebird(LinkedList<Segment> segments) {
+  public Snakebird(LinkedList<Segment> segments, color first, color second){
     body = segments;
+    color1 = first;
+    color2 = second;
   }
   
   public void expand(Segment s) {

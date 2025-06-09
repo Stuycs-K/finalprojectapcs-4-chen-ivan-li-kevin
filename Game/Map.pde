@@ -32,7 +32,7 @@ public class Map{
       for (int i = 9; i > 7; i--){
         playerParts.add(new Segment(i, 9));
       }
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
       player.get(0).direction = 2;
     }
     else if (level == 2){
@@ -68,7 +68,7 @@ public class Map{
       playerParts.add(new Segment(13, 10));
       playerParts.add(new Segment(14, 10));
       playerParts.add(new Segment(14, 9));
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts, color(#47db47), color(#18d11e)));
       player.get(0).direction = 4;
     }
     else if (level == 3){
@@ -91,7 +91,7 @@ public class Map{
       playerParts.add(new Segment(7, 7));
       playerParts.add(new Segment(6, 7));
       playerParts.add(new Segment(6, 8));
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
       player.get(0).direction = 2;
     }
     else if (level == 4){ 
@@ -116,7 +116,7 @@ public class Map{
         playerParts.add(new Segment(i, 5));
       }
       playerParts.add(new Segment(8, 6));
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
       player.get(0).direction = 2;
     }
     else if (level == 5){
@@ -135,7 +135,7 @@ public class Map{
       for (int i = 10; i < 13; i++){
         playerParts.add(new Segment(i, 12));
       }
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
       playerParts = new LinkedList<Segment>();
       for (int i = 11; i < 14; i++){
         Segment s = new Segment(i, 11);
@@ -145,7 +145,7 @@ public class Map{
       Segment s = new Segment(13, 12);
       playerParts.add(s);
       spaces[13][12] = s;
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts, color(#0088fe), color(#004dff)));
       player.get(0).direction = 4;
       player.get(1).direction = 4;
     }
@@ -172,7 +172,7 @@ public class Map{
       s = new Segment(11, 9);
       playerParts.add(s);
       spaces[11][9] = s;
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
       playerParts = new LinkedList<Segment>();
       s = new Segment(12, 7);
       playerParts.add(s);
@@ -180,7 +180,7 @@ public class Map{
       s = new Segment(11, 7);
       playerParts.add(s);
       spaces[11][7] = s;
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
       player.get(0).direction = 2;
       player.get(1).direction = 2;
     }
@@ -218,14 +218,14 @@ public class Map{
         playerParts.add(s);
         spaces[i][10] = s;
       }
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
       playerParts = new LinkedList<Segment>();
       for (int i = 7; i > 5; i--){
         Segment s = new Segment(i, 9);
         playerParts.add(s);
         spaces[i][9] = s;
       }
-      player.add(new Snakebird(playerParts));
+      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
       player.get(0).direction = 2;
       player.get(1).direction = 2;
     }

@@ -190,13 +190,10 @@ public void drawLevel(){
     for (Segment part : map.getPlayer(i).body){
       noStroke();
       if (altColor){
-        if (i == 0) fill(#47db47);
-          else fill(#0088fe);
-        }else{
-          if (i == 0) fill(#18d11e);
-          else fill(#004dff);
-        }
-        altColor = !altColor;
+        fill(map.getPlayer(i).color1);
+      }else{
+        fill(map.getPlayer(i).color2);
+      }altColor = !altColor;
         square(part.getX()*ratio, part.getY()*ratio, ratio);
       }
   }for (int i = 0; i < map.getPlayers().size(); i++){// extra code for head
