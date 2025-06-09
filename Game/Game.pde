@@ -12,7 +12,7 @@ void setup() {
   map = new Map();
   dead = false;
   win = false;
-  currentLevel = 4;
+  currentLevel = 1;
   currentPlayer = 0;
   map.loadLevel(currentLevel);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
@@ -133,6 +133,16 @@ public void drawBackground(){
         square(i*ratio, 12*ratio, ratio);
       }
     }if (currentLevel == 7){
+      square(12*ratio, 11*ratio, ratio);
+      for (int i = 9; i <= 14; i++){
+        square(i*ratio, 14*ratio, ratio);
+      }for (int i = 10; i <= 14; i++){
+        square(i*ratio, 12*ratio, ratio);
+        square(i*ratio, 13*ratio, ratio);
+      }for (int i = 13; i <= 15; i++){
+        square(i*ratio, 9*ratio, ratio);
+        square(i*ratio, 10*ratio, ratio);
+      }
     }
   }else{
     image(background2, 0, 0);
