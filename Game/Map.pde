@@ -186,6 +186,7 @@ public class Map{
     }
     else if (level == 7){ 
       spaces = new Space[20][15];
+      goal = new int[]{4,10};
       for (int i = 11; i < 15; i++) {
         spaces[6][i] = new Block(6, i);
         spaces[7][i] = new Block(7, i);
