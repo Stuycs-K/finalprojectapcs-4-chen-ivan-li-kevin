@@ -180,7 +180,7 @@ public class Map{
       s = new Segment(11, 7);
       playerParts.add(s);
       spaces[11][7] = s;
-      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
+      player.add(new Snakebird(playerParts, color(#0088fe), color(#004dff)));
       player.get(0).direction = 2;
       player.get(1).direction = 2;
     }
@@ -225,7 +225,7 @@ public class Map{
         playerParts.add(s);
         spaces[i][9] = s;
       }
-      player.add(new Snakebird(playerParts,color(#47db47),color(#18d11e)));
+      player.add(new Snakebird(playerParts, color(#0088fe), color(#004dff)));
       player.get(0).direction = 2;
       player.get(1).direction = 2;
     }
