@@ -115,6 +115,34 @@ public void drawBackground(){
       for (int i = 8; i <= 10; i++){
         square(i*ratio, 8*ratio, ratio);
       }
+    }if (currentLevel == 4){
+      square(6*ratio, 9*ratio, ratio);
+      square(7*ratio, 9*ratio, ratio);
+      square(9*ratio, 7*ratio, ratio);
+      square(10*ratio, 6*ratio, ratio);
+      square(12*ratio, 9*ratio, ratio);
+      square(12*ratio, 10*ratio, ratio);
+      for (int i = 7; i <= 9; i++){
+        square(10*ratio, i*ratio, ratio);
+        square(11*ratio, i*ratio, ratio);
+      }for (int i = 6; i <= 11; i++){
+        square(i*ratio, 10*ratio, ratio);
+      }for (int i = 8; i <= 11; i++){
+        square(i*ratio, 11*ratio, ratio);
+      }for (int i = 9; i <= 11; i++){
+        square(i*ratio, 12*ratio, ratio);
+      }
+    }if (currentLevel == 7){
+      square(12*ratio, 11*ratio, ratio);
+      for (int i = 9; i <= 14; i++){
+        square(i*ratio, 14*ratio, ratio);
+      }for (int i = 10; i <= 14; i++){
+        square(i*ratio, 12*ratio, ratio);
+        square(i*ratio, 13*ratio, ratio);
+      }for (int i = 13; i <= 15; i++){
+        square(i*ratio, 9*ratio, ratio);
+        square(i*ratio, 10*ratio, ratio);
+      }
     }
   }else{
     image(background2, 0, 0);
