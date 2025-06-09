@@ -57,3 +57,30 @@ This document must be updated daily every time you finish a work session.
 * Fixed gravity so that spikes kill properly when moving up to them and doesn't kill when falling on to block next to them - 10 minutes
 * Made level 4 (accidently wrote 5 in the commit message) - 9 minutes
 * Updated uml diagram and the details - 20 minutes
+
+### 2024-06-01 - Tried working on two snakebirds
+* Added code to try and make two snakebirds work but gave up - 34 minutes
+
+### 2024-06-02 - Level 5
+* Finished level 5 - 14 minutes
+
+### 2024-06-03 - Restarting the two snakebird code
+* Added snakebird segments into spaces[][] - 12 minutes
+* Made pushable method - 18 minutes
+
+### 2024-06-04 - Fixing gravity for two Snakebirds
+* Trying to fix the gravity so that both snakebirds can fall - 22 minutes
+
+### 2024-06-05 - Snakebird collision
+* Made it so that the snakebirds can't move into each other - 15 minutes
+
+### 2024-06-06 - Two snakebirds fully implemented
+* Fixed the code that made blocks disappear when a snakebird was pushed into it - 6 minutes
+* Fixed the win condition so that both snakebirds needed to enter the portal - 8 minutes
+
+### 2024-06-07 - More levels
+* Made level 6 - 10 minutes
+* Made level 7 - 15 minutes
+
+### 2024-06-08 - Final touches
+* Update prototype and readme - 6 minutes

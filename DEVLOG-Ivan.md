@@ -80,3 +80,6 @@ Started improving the head sprite (10 minutes)
 
 ### 2025-06-04 - More polishing
 Head sprite and direction implemented, and default directions for every level (30 minutes)
+
+
+I believe this document accurately reflects the contributions of my teamate. - Kevin Li

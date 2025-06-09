@@ -89,7 +89,7 @@ Block (class for environmental blocks): Blocks are immoveable sqaures on the boa
 * Make first stage [x] (estimated done by 5/29)
 * Make first couple of levels [x] (NEW)
 
-* Mutiple Snakebirds [] (OPTIONAL)
+* Mutiple Snakebirds [x] (OPTIONAL)
   * Arraylist of snakebirds in main game class
   * Button press changes between which snakebird is being controlled
   * Added boolean variable to snakebird class to track which is currently being controlled
