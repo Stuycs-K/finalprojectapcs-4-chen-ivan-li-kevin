@@ -80,3 +80,20 @@ Started improving the head sprite (10 minutes)
 
 ### 2025-06-04 - More polishing
 Head sprite and direction implemented, and default directions for every level (30 minutes)
+
+### 2025-06-05 - Began work on more details
+Started working on eyes of snakebird, will take some time (20 minutes)
+
+### 2025-06-06 - Head fully complete
+Snakebird eyes done, four orientations based on direction, beak pushed back in slightly to suit style (30 minutes)
+
+Other assorted bug fixes (5 minutes)
+
+### 2025-06-08 Final graphic details
+Snakebird indicator added, selected will have open eyes but all others will be asleep (20 minutes)
+
+2 backgrounds drawn for levels, closely copied off original (70 minutes)
+
+Shading details in non-ocean levels (20 minutes)
+
+Overhauled color to be a field in snakebird to fix a color changing issue (5 minutes)
