@@ -4,9 +4,11 @@ int ratio, currentLevel, currentPlayer;
 boolean dead, win;
 int debug;
 Map map;
+PImage background1, background2;
 void setup() {
   size(1200, 900);
-  background(255);
+  background1 = loadImage("background1.jpg");
+  background2 = loadImage("background2.jpg");
   map = new Map();
   dead = false;
   win = false;
@@ -15,12 +17,14 @@ void setup() {
   map.loadLevel(currentLevel);
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
   ratio = Math.min(width/grid.length, height/grid[0].length);
+  noStroke();
+  drawBackground();
   if (debugGrid) makeGrid();
   drawLevel();
 }
 void draw(){};
 void makeGrid(){
-  fill(255);
+  noFill();
   stroke(color(200));
   for(int i = 0; i < grid.length; i++){
     for (int j = 0; j < grid[0].length; j++){
@@ -74,12 +78,46 @@ void keyPressed(){
       }
     }
     if(!dead && !win){
-      background(255);
+      drawBackground();
       if (debugGrid){
         makeGrid();
       }
       drawLevel();  
     }
+  }
+}
+public void drawBackground(){
+  if (currentLevel <= 4 || currentLevel == 7){
+    image(background1, 0, 0);
+    fill(#5a3b30);
+    if (currentLevel == 1){
+      for (int i = 6; i <= 8; i++){
+        square(i*ratio, 7*ratio, ratio);
+     }for (int i = 7; i <= 9; i++){
+        square(i*ratio, 8*ratio, ratio);
+        square(11*ratio, i*ratio, ratio);
+     }for (int i = 8; i <= 10; i++){
+        square(i*ratio, 9*ratio, ratio);
+      }
+      square(11*ratio, 10*ratio, ratio);
+    }if (currentLevel == 2){
+      for (int i = 8; i <= 10; i++){
+        for (int j = 9; j <= 11; j++){
+          square(i*ratio, j*ratio, ratio);
+        }
+      }
+    }if (currentLevel == 3){
+      for (int i = 7; i <= 11; i++){
+        for (int j = 9; j <= 10; j++){
+          square(i*ratio, j*ratio, ratio);
+        }
+      }
+      for (int i = 8; i <= 10; i++){
+        square(i*ratio, 8*ratio, ratio);
+      }
+    }
+  }else{
+    image(background2, 0, 0);
   }
 }
 public void drawLevel(){
@@ -88,7 +126,7 @@ public void drawLevel(){
   if (map.opened()){
     fill(#FF00FF);
   }else{
-    fill(#FFFFFF);
+    noFill();
   }circle(map.getGoal()[0]*ratio + ratio/2, map.getGoal()[1]*ratio + ratio/2, 4*ratio/5);
   for (int i = 0; i < spaceMap.length; i++){ //drawing map
     for (int j = 0; j < spaceMap[i].length; j++){
@@ -105,8 +143,11 @@ public void drawLevel(){
           stroke(200);
           if (!debugGrid){
             noStroke();
+          }if(currentLevel <= 4 || currentLevel == 7){
+            fill(#9b6537);
+          }else{
+            fill(#729499);
           }
-          fill(#9b6537);
           square(i*ratio, j*ratio, ratio);
         }
       }
@@ -471,7 +512,7 @@ public int checkBody(Snakebird s) {
 
 public void win(){
   win = true;
-  background(255);
+  drawBackground();
   drawLevel();
   textAlign(CENTER);
   fill(0);
@@ -488,7 +529,7 @@ public void death(){
   while (body.size() > 0){
     body.removeFirst();
   }
-  background(255);
+  drawBackground();
   drawLevel();
   textSize(120);
   fill(0);
