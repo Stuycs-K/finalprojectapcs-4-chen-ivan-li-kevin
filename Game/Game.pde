@@ -1,4 +1,4 @@
-boolean debugGrid = false;
+boolean debugGrid = true;
 int[][] grid;
 int ratio, currentLevel, currentPlayer;
 boolean dead, win;
@@ -8,15 +8,17 @@ PImage background1, background2;
 void setup() {
   size(1200, 900);
   background1 = loadImage("background1.jpg");
+  background2 = loadImage("background2.jpg");
   map = new Map();
   dead = false;
   win = false;
   currentLevel = 1;
   currentPlayer = 0;
   map.loadLevel(currentLevel);
-  drawBackground();
   grid = new int[map.getSpaces().length][map.getSpaces()[1].length];
   ratio = Math.min(width/grid.length, height/grid[0].length);
+  noStroke();
+  drawBackground();
   if (debugGrid) makeGrid();
   drawLevel();
 }
@@ -87,22 +89,28 @@ void keyPressed(){
 public void drawBackground(){
   if (currentLevel <= 4 || currentLevel == 7){
     image(background1, 0, 0);
-    switch(currentLevel){
-      case 1:
-        fill(#5a3b30);
-        for (int i = 6; i <= 8; i++){
-          square(i*ratio, 7*ratio, ratio);
-        }for (int i = 7; i <= 9; i++){
-          square(i*ratio, 8*ratio, ratio);
-          square(11*ratio, i*ratio, ratio);
-        }for (int i = 8; i <= 10; i++){
-          square(i*ratio, 9*ratio, ratio);
+    fill(#5a3b30);
+    if (currentLevel == 1){
+      for (int i = 6; i <= 8; i++){
+        square(i*ratio, 7*ratio, ratio);
+     }for (int i = 7; i <= 9; i++){
+        square(i*ratio, 8*ratio, ratio);
+        square(11*ratio, i*ratio, ratio);
+     }for (int i = 8; i <= 10; i++){
+        square(i*ratio, 9*ratio, ratio);
+      }
+      square(11*ratio, 10*ratio, ratio);
+    }if (currentLevel == 2){
+      for (int i = 8; i <= 10; i++){
+        for (int j = 9; j <= 11; j++){
+          square(i*ratio, j*ratio, ratio);
         }
-        square(11*ratio, 10*ratio, ratio);
-        break;
+      }
+    }if (currentLevel == 3){
+      //for 
     }
   }else{
-    background(255); //placeholder
+    image(background2, 0, 0);
   }
 }
 public void drawLevel(){
@@ -128,8 +136,11 @@ public void drawLevel(){
           stroke(200);
           if (!debugGrid){
             noStroke();
+          }if(currentLevel <= 4 || currentLevel == 7){
+            fill(#9b6537);
+          }else{
+            fill(#729499);
           }
-          fill(#9b6537);
           square(i*ratio, j*ratio, ratio);
         }
       }
