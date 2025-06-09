@@ -149,6 +149,10 @@ public void drawBackground(){
   }
 }
 public void drawLevel(){
+  textAlign(LEFT, TOP);
+  textSize(40);
+  fill(255);
+  text("Level: " + currentLevel, 10, 10);
   Space[][] spaceMap = map.getSpaces();
   stroke(#FF00FF);
   if (map.opened()){
@@ -542,7 +546,7 @@ public void win(){
   win = true;
   drawBackground();
   drawLevel();
-  textAlign(CENTER);
+  textAlign(CENTER, BOTTOM);
   fill(0);
   textSize(120);
   text("You Win!", width/2, 200);
@@ -561,7 +565,7 @@ public void death(){
   drawLevel();
   textSize(120);
   fill(0);
-  textAlign(CENTER);
+  textAlign(CENTER, BOTTOM);
   text("Game Over!", width/2, 200);
   textSize(30);
   text("Press R to restart the level.", width/2, 280);
