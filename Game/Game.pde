@@ -1,4 +1,4 @@
-boolean debugGrid = true;
+boolean debugGrid = false;
 int[][] grid;
 int ratio, currentLevel, currentPlayer;
 boolean dead, win;
@@ -107,7 +107,14 @@ public void drawBackground(){
         }
       }
     }if (currentLevel == 3){
-      //for 
+      for (int i = 7; i <= 11; i++){
+        for (int j = 9; j <= 10; j++){
+          square(i*ratio, j*ratio, ratio);
+        }
+      }
+      for (int i = 8; i <= 10; i++){
+        square(i*ratio, 8*ratio, ratio);
+      }
     }
   }else{
     image(background2, 0, 0);
